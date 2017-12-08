@@ -1,0 +1,32 @@
+{
+  "Explore": [
+    {
+      "title":"Dropbox",
+      "category":"Product Manager",
+      "URL":"https://www.dropbox.com/plans",
+      "description":"Keep all your files in one place.",
+      "imageURL":"https://firebasestorage.googleapis.com/v0/b/stackapp-28a4a.appspot.com/o/dropbox%402x.png?alt=media&token=c5b761fd-93ba-47b8-a120-2037bbd6fe93"
+    },
+    {
+      "title":"Figma",
+      "category":"Designer",
+      "URL":"https://www.figma.com/pricing",
+      "description":"Figma is the first interface design tool based in the browser, making it easier for teams to create software.",
+      "imageURL":"https://firebasestorage.googleapis.com/v0/b/stackapp-28a4a.appspot.com/o/figma%402x.png?alt=media&token=6822c1bb-6b30-4d67-a755-95ec6c8adb12"
+    },
+    {
+      "title":"github",
+      "category":"Developer",
+      "URL":"https://github.com/pricing",
+      "description":"Work together across unlimited private repositories with a paid plan.",
+      "imageURL":"https://firebasestorage.googleapis.com/v0/b/stackapp-28a4a.appspot.com/o/github%402x.png?alt=media&token=2f3ec50a-a75f-4b46-9936-a35315225d05"
+    },
+    {
+      "title":"amazon",
+      "category":"Developer",
+      "URL":"https://www.figma.com/pricing",
+      "description":"Figma is the first interface design tool based in the browser, making it easier for teams to create software.",
+      "imageURL":"https://firebasestorage.googleapis.com/v0/b/stackapp-28a4a.appspot.com/o/amazon%402x.png?alt=media&token=0d597682-8fd3-41bb-9f35-3661e644c87d"
+    }
+  ]
+}

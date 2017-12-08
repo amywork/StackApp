@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>109037541702-4om9gocj88oqrb87fcsnu95c720joa30.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.109037541702-4om9gocj88oqrb87fcsnu95c720joa30</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBCG6L1zc4v0sxJ_1xybPjpgqz7Jxjcen8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>109037541702</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>younari.-01-.stackApp</string>
+	<key>PROJECT_ID</key>
+	<string>stackapp-28a4a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>stackapp-28a4a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:109037541702:ios:831d94b5bb64a642</string>
+	<key>DATABASE_URL</key>
+	<string>https://stackapp-28a4a.firebaseio.com</string>
+</dict>
+</plist>
