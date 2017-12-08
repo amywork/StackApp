@@ -10,7 +10,7 @@ import UIKit
 class SettingMainVC: UIViewController {
     
     // MARK: - Data Property
-    var data:SettingData?
+    var data:Setting?
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -28,24 +28,24 @@ extension SettingMainVC: SettingCellDelegate {
 // MARK: - TableView Source
 extension SettingMainVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return GlobalState.shared.settingDataList.count
+        return GlobalState.shared.settings.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data = GlobalState.shared.settingDataList[section]
+        data = GlobalState.shared.settings[section]
         return data?.cellContentList.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell", for: indexPath) as! SettingTableViewCell
-        let data = GlobalState.shared.settingDataList[indexPath.section]
+        let data = GlobalState.shared.settings[indexPath.section]
         cell.index = indexPath.row
         cell.data = data
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let section = GlobalState.shared.settingDataList[section]
+        let section = GlobalState.shared.settings[section]
         return section.sectionTitle
     }
     

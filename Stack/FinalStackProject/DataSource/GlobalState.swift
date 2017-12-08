@@ -6,18 +6,20 @@ import Foundation
 final class GlobalState {
     
     static let shared = GlobalState()
- 
-    private init() {
+    private init() { }
+    
+    enum Constants: String {
+        case Explore
+        case userStackKey
     }
     
     var documentDirectory: URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
     
-    enum Constants: String {
-        case Explore
-        case userStackKey
-    }
+    // MARK: - data Property
+    var explores: [Explore] = []
+    var settings: [Setting] = []
     
     var stacks: [Stack] {
         get {
@@ -27,10 +29,6 @@ final class GlobalState {
             UserDefaults.standard.set(stacks, forKey: GlobalState.Constants.userStackKey.rawValue)
         }
     }
-    
-    // MARK: - data Property
-    var explores: [Explore] = []
-    var settingDataList: [SettingData] = []
     
     func addStack(_ data: Stack) {
         stacks.append(data)
@@ -49,7 +47,7 @@ final class GlobalState {
         
         guard let settingDataArr = NSArray(contentsOf: settingDataURL) as? [[String:Any]] else { return }
         for settingDataDic in settingDataArr {
-            self.settingDataList.append(SettingData(with: settingDataDic))
+            self.settings.append(Setting(with: settingDataDic))
         }
     }
 

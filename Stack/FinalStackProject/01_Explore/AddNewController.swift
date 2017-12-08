@@ -11,16 +11,14 @@ import UIKit
 class AddNewController: UIViewController, UITextFieldDelegate, PickerContainerControllerDelegate {
     
     
+    var name: String?
+    var descriptions: String?
     
     @IBOutlet weak var nameTextField: UITextField! // name
+    @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var priceTextField: UITextField! // price
-    
     @IBOutlet weak var containerPickerView: UIView!
-    
     @IBOutlet weak var firstBillTexField: UITextField!
-    @IBOutlet weak var cycleTextView: UITextView!
-    @IBOutlet weak var cyclePicker: UIPickerView!
-   
     @IBAction func didTapSaveBtn(_ sender: UIButton) {
 //        guard let name = nameTextField.text, !name.isEmpty else { return }
 //        let payDay: Date = payDayPicker.date
@@ -34,7 +32,6 @@ class AddNewController: UIViewController, UITextFieldDelegate, PickerContainerCo
 //        self.navigationController?.popViewController(animated: true)
     }
     
-    
     @IBAction func didTapFirstBillTextField(_ sender: UITextField) {
         containerPickerView.isHidden = false
         firstBillTexField.isEnabled = false
@@ -42,16 +39,22 @@ class AddNewController: UIViewController, UITextFieldDelegate, PickerContainerCo
     
     func didSelectedDate(_ date: Date) {
         firstBillTexField.text = date.string()
+        containerPickerView.isHidden = true
+        firstBillTexField.isEnabled = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        firstBillTexField.tintColor = .clear
         containerPickerView.isHidden = true
+        self.nameTextField.text = name
+        self.descriptionTextView.text = descriptions
+        nameTextField.isEnabled = false
+        descriptionTextView.isEditable = false
     }
     
     // Edit Later
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        nameTextField.resignFirstResponder()
         return true
     }
     
@@ -92,7 +95,7 @@ class PickerContainerController: UIViewController {
     }
     
     @IBAction func donBtnHandler(_ sender: UIButton) {
-        self.removeFromParentViewController()
+        delegate?.didSelectedDate(firstBillPicker.date)
     }
     
 }

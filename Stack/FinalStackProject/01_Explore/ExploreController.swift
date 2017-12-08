@@ -98,6 +98,14 @@ extension ExploreController: UITableViewDelegate, UITableViewDataSource{
         cell.data = visibleResults[indexPath.row]
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sb = UIStoryboard.main()
+        let destination = sb.instantiateViewController(withIdentifier: "AddNewController") as! AddNewController
+        destination.name = visibleResults[indexPath.row].title
+        destination.descriptions = visibleResults[indexPath.row].description
+        self.navigationController?.pushViewController(destination, animated: true)
+    }
 
 }
 

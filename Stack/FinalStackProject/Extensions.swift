@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 
-private extension UIStoryboard {
-    static func main() -> UIStoryboard { return UIStoryboard(name: "Main", bundle: Bundle.main) }
+extension UIStoryboard {
+    static func main() -> UIStoryboard { return UIStoryboard(name: "Main", bundle: nil) }
 }
 
 extension Notification.Name {
@@ -65,7 +65,7 @@ extension Date {
     
     public func string() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = mmdd
+        formatter.dateFormat = "yy년 MM월 dd일"
         return formatter.string(from: self)
     }
     

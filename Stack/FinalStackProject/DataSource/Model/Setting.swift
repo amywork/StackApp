@@ -14,7 +14,7 @@ enum CellType: String {
 }
 
 // MARK: - Section of Setting
-struct SettingData {
+struct Setting {
     
     var sectionTitle: String = ""
     var cellContentList: [String] = []
