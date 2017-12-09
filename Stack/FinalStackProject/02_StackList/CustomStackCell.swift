@@ -17,20 +17,18 @@ class CustomStackCell: UITableViewCell {
     
     var data: Stack? {
         willSet {
-            configureCell()
-            payday = data?.date.string()
+            self.titleLabel?.text = data?.title
+            guard let payday = payday else { return }
+            self.subTitleLabel?.text = "매 월 " + payday + " 일 결제"
         }
-    }
-    
-    func configureCell() {
-        self.titleLabel.text = data?.title
-        guard let payday = payday else { return }
-        self.subTitleLabel.text = "매 월 " + payday + " 일 결제"
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

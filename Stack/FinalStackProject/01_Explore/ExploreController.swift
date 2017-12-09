@@ -42,6 +42,7 @@ class ExploreController: UIViewController {
                 }
             }
         }
+        
     }
     
     /// A `nil` / empty filter string means show all results. Otherwise, show only results containing the filter.
@@ -76,6 +77,9 @@ class ExploreController: UIViewController {
         }
     }
 
+    @IBAction func unwindToExploreController(segue: UIStoryboardSegue) {
+    
+    }
 }
 
 /*UITableViewDataSource*/
@@ -104,7 +108,9 @@ extension ExploreController: UITableViewDelegate, UITableViewDataSource{
         let destination = sb.instantiateViewController(withIdentifier: "AddNewController") as! AddNewController
         destination.name = visibleResults[indexPath.row].title
         destination.descriptions = visibleResults[indexPath.row].description
-        self.navigationController?.pushViewController(destination, animated: true)
+        let navi = UINavigationController(rootViewController: destination)
+        self.present(navi, animated: true, completion: nil)
+        //self.navigationController?.pushViewController(destination, animated: true)
     }
 
 }

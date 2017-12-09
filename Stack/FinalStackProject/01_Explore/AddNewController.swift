@@ -9,10 +9,10 @@
 import UIKit
 
 class AddNewController: UIViewController, UITextFieldDelegate, PickerContainerControllerDelegate {
-    
-    
+
     var name: String?
     var descriptions: String?
+    var selectedDate: Date?
     
     @IBOutlet weak var nameTextField: UITextField! // name
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -20,16 +20,16 @@ class AddNewController: UIViewController, UITextFieldDelegate, PickerContainerCo
     @IBOutlet weak var containerPickerView: UIView!
     @IBOutlet weak var firstBillTexField: UITextField!
     @IBAction func didTapSaveBtn(_ sender: UIButton) {
-//        guard let name = nameTextField.text, !name.isEmpty else { return }
-//        let payDay: Date = payDayPicker.date
-//        let planType: PlanType = monthlyBtn.isSelected ? PlanType.monthly : PlanType.yearly
-//        let price: Float = Float(priceTextField.text!) ?? 0.0
-//
-//        let newStack = Stack(title: name, planType: planType, date: payDay, price: price)
-//        DataManager.shared.addStack(newStack)
-//
-//        NotificationCenter.default.post(name: Notification.Name.newStack, object: nil)
-//        self.navigationController?.popViewController(animated: true)
+        guard let name = name else { return }
+        guard let date = selectedDate else { return }
+        let planType: PlanType = PlanType.yearly
+        let price: Float = 10.99
+        let newStack = Stack(title: name, planType: planType, date: date, price: price)
+        App.api.uploadStacks(data: newStack) { (isSuccess) in
+            if isSuccess {
+                print("성공성공")
+            }
+        }
     }
     
     @IBAction func didTapFirstBillTextField(_ sender: UITextField) {
@@ -41,6 +41,7 @@ class AddNewController: UIViewController, UITextFieldDelegate, PickerContainerCo
         firstBillTexField.text = date.string()
         containerPickerView.isHidden = true
         firstBillTexField.isEnabled = true
+        selectedDate = date
     }
     
     override func viewDidLoad() {

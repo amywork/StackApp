@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t6p-XZ-c0E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t6p-XZ-c0E">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Baseline standard spacing" minToolsVersion="9.0"/>
@@ -95,7 +95,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nBZ-b6-a0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-231.19999999999999" y="-4945.2773613193403"/>
+            <point key="canvasLocation" x="-628" y="-4945"/>
         </scene>
         <!--My Stack-->
         <scene sceneID="T5m-g0-Dw7">
@@ -141,35 +141,52 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="72.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mN8-Lu-g1T">
-                                                    <rect key="frame" x="15" y="25" width="16" height="16"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mN8-Lu-g1T">
+                                                    <rect key="frame" x="31" y="28.5" width="16" height="16"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16" id="2uA-L0-ptv"/>
+                                                        <constraint firstAttribute="width" constant="16" id="KIu-ts-tIg"/>
+                                                    </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="매 월 29일 결제" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVf-pI-sTE">
-                                                    <rect key="frame" x="226" y="25" width="108" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Pvn-Wx-ZlG">
+                                                    <rect key="frame" x="55" y="16.5" width="88.5" height="40"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dropbox" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyz-Bd-iF4">
+                                                            <rect key="frame" x="0.0" y="0.0" width="88.5" height="26.5"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="monthly, $99.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCH-uW-AiO">
+                                                            <rect key="frame" x="0.0" y="26.5" width="88.5" height="13.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매 월 29일 결제" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVf-pI-sTE">
+                                                    <rect key="frame" x="230" y="28" width="83" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dropbox" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyz-Bd-iF4">
-                                                    <rect key="frame" x="49" y="16" width="116" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="monthly, $99.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCH-uW-AiO">
-                                                    <rect key="frame" x="49" y="34" width="126" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Pvn-Wx-ZlG" firstAttribute="centerY" secondItem="B7z-J8-5A6" secondAttribute="centerY" id="0ep-jc-aof"/>
+                                                <constraint firstItem="mN8-Lu-g1T" firstAttribute="centerY" secondItem="B7z-J8-5A6" secondAttribute="centerY" id="2XG-pb-t3S"/>
+                                                <constraint firstItem="mN8-Lu-g1T" firstAttribute="leading" secondItem="B7z-J8-5A6" secondAttribute="leadingMargin" constant="16" id="7xV-Jj-reL"/>
+                                                <constraint firstItem="Pvn-Wx-ZlG" firstAttribute="leading" secondItem="mN8-Lu-g1T" secondAttribute="trailing" constant="8" id="9Bi-0O-7ZD"/>
+                                                <constraint firstItem="SVf-pI-sTE" firstAttribute="centerY" secondItem="B7z-J8-5A6" secondAttribute="centerY" id="zPt-p4-WDX"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="SVf-pI-sTE" secondAttribute="trailing" constant="62" id="814-CB-lgy"/>
+                                        </constraints>
                                         <connections>
+                                            <outlet property="subTitleLabel" destination="jCH-uW-AiO" id="mW9-a8-mDc"/>
+                                            <outlet property="titleLabel" destination="gyz-Bd-iF4" id="W6C-vN-G9J"/>
                                             <segue destination="ZzS-z9-Agp" kind="show" id="ZxP-5u-MaX"/>
                                         </connections>
                                     </tableViewCell>
@@ -339,7 +356,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="mIl-FW-Yji">
-                                                    <rect key="frame" x="73" y="19.5" width="205" height="41"/>
+                                                    <rect key="frame" x="85" y="19.5" width="205" height="41"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AirBnb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zx-YU-7MJ">
                                                             <rect key="frame" x="0.0" y="0.0" width="205" height="26.5"/>
@@ -358,7 +375,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="IUp-WG-u13" firstAttribute="leading" secondItem="nEo-sL-uOi" secondAttribute="leadingMargin" constant="4" id="4Zg-8f-2DH"/>
-                                                <constraint firstItem="mIl-FW-Yji" firstAttribute="leading" secondItem="IUp-WG-u13" secondAttribute="trailing" constant="4" id="4fm-6s-tnl"/>
+                                                <constraint firstItem="mIl-FW-Yji" firstAttribute="leading" secondItem="IUp-WG-u13" secondAttribute="trailing" constant="16" id="4fm-6s-tnl"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="IUp-WG-u13" secondAttribute="bottom" constant="4" id="HeT-4s-VHd"/>
                                                 <constraint firstItem="mIl-FW-Yji" firstAttribute="width" secondItem="nEo-sL-uOi" secondAttribute="width" multiplier="0.6" id="dwH-4g-byc"/>
                                                 <constraint firstItem="IUp-WG-u13" firstAttribute="top" secondItem="nEo-sL-uOi" secondAttribute="topMargin" constant="4" id="lqf-y4-Lic"/>
@@ -815,7 +832,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uLp-SC-dj0"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add New" largeTitleDisplayMode="always" id="n9I-vB-uTR"/>
+                    <navigationItem key="navigationItem" title="Add New" largeTitleDisplayMode="always" id="n9I-vB-uTR">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="eyS-15-FQm">
+                            <color key="tintColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <segue destination="b0f-Dd-gix" kind="unwind" unwindAction="unwindToExploreControllerWithSegue:" id="6pY-4x-dZp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -827,6 +851,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aeN-z8-2B1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="b0f-Dd-gix" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="544.79999999999995" y="-4945.2773613193403"/>
         </scene>

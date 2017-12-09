@@ -133,9 +133,9 @@
 		DD72677F1FB3E7CF00514E72 /* 02_StackList */ = {
 			isa = PBXGroup;
 			children = (
+				DD7267931FB41A1400514E72 /* CustomStackCell.swift */,
 				DD7267951FB41CA500514E72 /* ListMainController.swift */,
 				4BFF2B7D1F9AE34B00B1C150 /* ListDetailController.swift */,
-				DD7267931FB41A1400514E72 /* CustomStackCell.swift */,
 			);
 			path = 02_StackList;
 			sourceTree = "<group>";

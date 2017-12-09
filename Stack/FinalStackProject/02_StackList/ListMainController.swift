@@ -18,6 +18,18 @@ class ListMainController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         self.navigationController?.navigationItem.title = "My Stack"
         self.navigationController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addController))
+        
+        App.api.fetchUserStacks { (isSuccess) in
+            print("HERE")
+        }
+        
+        NotificationCenter.default
+            .addObserver(forName: .newStack, object: nil, queue: nil) { (noti) in
+                self.stacks = GlobalState.shared.stacks
+                DispatchQueue.main.async {
+                    self.itemTableView.reloadData()
+                }
+        }
     }
     
     //MARK: - TableView DataSource
@@ -26,11 +38,11 @@ class ListMainController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "✔︎ Now subscribing..."
+        return "✔︎ Your stack list"
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 52
+        return 64
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

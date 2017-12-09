@@ -1,7 +1,7 @@
 // Singleton DataCenter Object Class
 
 import Foundation
-
+import UIKit
 
 final class GlobalState {
     
@@ -10,6 +10,7 @@ final class GlobalState {
     
     enum Constants: String {
         case Explore
+        case Users
         case userStackKey
     }
     
@@ -17,22 +18,14 @@ final class GlobalState {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
     
+    var uuid: String {
+        return UIDevice.current.identifierForVendor!.uuidString
+    }
+    
     // MARK: - data Property
     var explores: [Explore] = []
     var settings: [Setting] = []
-    
-    var stacks: [Stack] {
-        get {
-            let list = UserDefaults.standard.value(forKey: GlobalState.Constants.userStackKey.rawValue) as? [Stack] ?? []
-            return list
-        }set {
-            UserDefaults.standard.set(stacks, forKey: GlobalState.Constants.userStackKey.rawValue)
-        }
-    }
-    
-    func addStack(_ data: Stack) {
-        stacks.append(data)
-    }
+    var stacks: [Stack] = []
     
     // MARK: - load data method
     func loadSettingData() {
