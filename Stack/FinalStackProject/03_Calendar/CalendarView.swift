@@ -10,6 +10,7 @@ import UIKit
 
 enum WeekDay: Int {
     case Sun=0,Mon,Tue,Wed,Thu,Fri,Sat
+   
     var name: String {
         switch self {
         case .Sun:

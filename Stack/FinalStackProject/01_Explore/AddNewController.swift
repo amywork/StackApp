@@ -8,17 +8,23 @@
 
 import UIKit
 
-class AddNewController: UIViewController, UITextFieldDelegate, PickerContainerControllerDelegate {
+class AddNewController: UIViewController, UITextFieldDelegate, PickerContainerControllerDelegate, cyclePickerControllerDelegate {
 
     var name: String?
     var descriptions: String?
     var selectedDate: Date?
     
-    @IBOutlet weak var nameTextField: UITextField! // name
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
+    
     @IBOutlet weak var priceTextField: UITextField! // price
-    @IBOutlet weak var containerPickerView: UIView!
+    
+    @IBOutlet weak var firstBillPickerView: UIView!
     @IBOutlet weak var firstBillTexField: UITextField!
+    
+    @IBOutlet weak var cyclePickerView: UIView!
+    @IBOutlet weak var cycleTexField: UITextField!
+  
     @IBAction func didTapSaveBtn(_ sender: UIButton) {
         guard let name = name else { return }
         guard let date = selectedDate else { return }
@@ -31,30 +37,20 @@ class AddNewController: UIViewController, UITextFieldDelegate, PickerContainerCo
             }
         }
     }
-    
-    @IBAction func didTapFirstBillTextField(_ sender: UITextField) {
-        containerPickerView.isHidden = false
-        firstBillTexField.isEnabled = false
-    }
-    
-    func didSelectedDate(_ date: Date) {
-        firstBillTexField.text = date.string()
-        containerPickerView.isHidden = true
-        firstBillTexField.isEnabled = true
-        selectedDate = date
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        cycleTexField.delegate = self
         firstBillTexField.tintColor = .clear
-        containerPickerView.isHidden = true
+        cycleTexField.tintColor = .clear
+        firstBillPickerView.isHidden = true
+        cyclePickerView.isHidden = true
         self.nameTextField.text = name
         self.descriptionTextView.text = descriptions
         nameTextField.isEnabled = false
         descriptionTextView.isEditable = false
     }
     
-    // Edit Later
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true
     }
@@ -67,10 +63,40 @@ class AddNewController: UIViewController, UITextFieldDelegate, PickerContainerCo
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "pickerContainerController" {
+        guard let identifier = segue.identifier else { return }
+        switch identifier {
+        case "pickerContainerController":
             let destination = segue.destination as! PickerContainerController
             destination.delegate = self
+        case "cycleContainerController":
+            let destination = segue.destination as! cyclePickerController
+            destination.delegate = self
+        default:
+            break
         }
+    }
+    
+    @IBAction func didTapFirstBillTextField(_ sender: UITextField) {
+        firstBillPickerView.isHidden = false
+        firstBillTexField.isEnabled = false
+    }
+    
+    func didSelectedDate(_ date: Date) {
+        firstBillTexField.text = date.string()
+        firstBillPickerView.isHidden = true
+        firstBillTexField.isEnabled = true
+        selectedDate = date
+    }
+    
+    @IBAction func didTapCycleTexField(_ sender: UITextField) {
+        cyclePickerView.isHidden = false
+        cycleTexField.isEnabled = false
+    }
+
+    func didSelectedType(_ type: String) {
+        cycleTexField.text = type
+        cyclePickerView.isHidden = true
+        cycleTexField.isEnabled = true
     }
 
 }
@@ -97,6 +123,61 @@ class PickerContainerController: UIViewController {
     
     @IBAction func donBtnHandler(_ sender: UIButton) {
         delegate?.didSelectedDate(firstBillPicker.date)
+    }
+    
+}
+
+
+protocol cyclePickerControllerDelegate {
+    func didSelectedType(_ type: String)
+}
+
+class cyclePickerController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    var delegate: cyclePickerControllerDelegate?
+    
+    @IBOutlet weak var cyclePicker: UIPickerView!
+    
+    private var type: String = ""
+ 
+    @IBAction func donBtnHandler(_ sender: UIButton) {
+        delegate?.didSelectedType(type)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        cyclePicker.dataSource = self
+        cyclePicker.delegate = self
+        delegate?.didSelectedType(type)
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if row == 0 {
+            return PlanType.monthly.rawValue
+        }else if row == 1 {
+            return PlanType.yearly.rawValue
+        }
+        return nil
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if row == 0 {
+            delegate?.didSelectedType(PlanType.monthly.rawValue)
+        }else if row == 1 {
+           delegate?.didSelectedType(PlanType.yearly.rawValue)
+        }
     }
     
 }

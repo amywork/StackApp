@@ -104,6 +104,7 @@ extension ExploreController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.isSelected = false
         let sb = UIStoryboard.main()
         let destination = sb.instantiateViewController(withIdentifier: "AddNewController") as! AddNewController
         destination.name = visibleResults[indexPath.row].title
