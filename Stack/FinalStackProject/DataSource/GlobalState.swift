@@ -11,21 +11,32 @@ final class GlobalState {
     enum Constants: String {
         case Explore
         case Users
-        case userStackKey
+        case Stacks
     }
     
     var documentDirectory: URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
     
-    var uuid: String {
-        return UIDevice.current.identifierForVendor!.uuidString
-    }
-    
     // MARK: - data Property
     var explores: [Explore] = []
     var settings: [Setting] = []
-    var stacks: [Stack] = []
+    
+    var stakcs: [Stack] {
+        let stackDics: [[String:String]] = UserDefaults.standard.array(forKey: Constants.Stacks.rawValue) as? [[String:String]] ?? []
+        let stacks = stackDics.flatMap { (stackDic) -> Stack? in
+            return Stack(with: stackDic)
+        }
+        return stacks
+    }
+    
+    func addStack(stack: Stack){
+        let dic: [String:String] = stack.dictionary
+        var stackDics: [[String:String]] = UserDefaults.standard.array(forKey: Constants.Stacks.rawValue) as? [[String:String]] ?? []
+        stackDics.append(dic)
+        UserDefaults.standard.set(stackDics, forKey: Constants.Stacks.rawValue)
+    }
+    
     
     // MARK: - load data method
     func loadSettingData() {

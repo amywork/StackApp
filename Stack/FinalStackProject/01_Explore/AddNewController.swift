@@ -31,11 +31,10 @@ class AddNewController: UIViewController, UITextFieldDelegate, PickerContainerCo
         let planType: PlanType = PlanType.yearly
         let price: Float = 10.99
         let newStack = Stack(title: name, planType: planType, date: date, price: price)
-        App.api.uploadStacks(data: newStack) { (isSuccess) in
-            if isSuccess {
-                print("성공성공")
-            }
-        }
+        GlobalState.shared.addStack(stack: newStack)
+        
+        NotificationCenter.default.post(name: .newStack, object: nil)
+        print("GlobalState.shared.addStack(stack: newStack)")
     }
 
     override func viewDidLoad() {

@@ -12,8 +12,8 @@ import Firebase
 protocol API {
     typealias SuccessHandler = (_ isSuccess: Bool) -> Void
     func fetchExplores(handler: @escaping SuccessHandler) -> Void
-    func uploadStacks(data: Stack, handler: @escaping SuccessHandler) -> Void
-    func fetchUserStacks(handler: @escaping SuccessHandler) -> Void
+    //func uploadStacks(data: Stack, handler: @escaping SuccessHandler) -> Void
+    //func fetchUserStacks(handler: @escaping SuccessHandler) -> Void
 }
 
 class FirebaseAPI: API {
@@ -37,6 +37,7 @@ class FirebaseAPI: API {
         }
     }
     
+    /*
     func uploadStacks(data: Stack, handler: @escaping SuccessHandler) {
         let value = data.dictionary
         baseReference
@@ -72,4 +73,5 @@ class FirebaseAPI: API {
                 }
         }
     }
+     */
 }

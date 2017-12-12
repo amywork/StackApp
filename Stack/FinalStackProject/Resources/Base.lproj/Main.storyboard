@@ -185,6 +185,8 @@
                                             <constraint firstAttribute="trailing" secondItem="SVf-pI-sTE" secondAttribute="trailing" constant="62" id="814-CB-lgy"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="colorView" destination="mN8-Lu-g1T" id="sJ5-vE-xVy"/>
+                                            <outlet property="detailLabel" destination="SVf-pI-sTE" id="TSw-TN-goy"/>
                                             <outlet property="subTitleLabel" destination="jCH-uW-AiO" id="mW9-a8-mDc"/>
                                             <outlet property="titleLabel" destination="gyz-Bd-iF4" id="W6C-vN-G9J"/>
                                             <segue destination="ZzS-z9-Agp" kind="show" id="ZxP-5u-MaX"/>

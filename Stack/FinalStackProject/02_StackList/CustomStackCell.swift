@@ -12,12 +12,15 @@ class CustomStackCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
+    @IBOutlet weak var colorView: UIView!
+    @IBOutlet weak var detailLabel: UILabel!
     
     private var payday: String?
     
     var data: Stack? {
         willSet {
             self.titleLabel?.text = data?.title
+            self.detailLabel?.text = "\(data?.price)"
             guard let payday = payday else { return }
             self.subTitleLabel?.text = "매 월 " + payday + " 일 결제"
         }
