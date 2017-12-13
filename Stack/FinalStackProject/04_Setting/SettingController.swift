@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class SettingMainVC: UIViewController {
+class SettingController: UIViewController {
     
     // MARK: - Data Property
     var data:Setting?
@@ -19,14 +19,14 @@ class SettingMainVC: UIViewController {
 }
 
 // MARK - Custom Cell Delegate
-extension SettingMainVC: SettingCellDelegate {
+extension SettingController: SettingCellDelegate {
     func didChangedSwitchValue(_ sender: UISwitch) {
         // switch value changed code in here
     }
 }
 
 // MARK: - TableView Source
-extension SettingMainVC: UITableViewDelegate, UITableViewDataSource {
+extension SettingController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return GlobalState.shared.settings.count
     }

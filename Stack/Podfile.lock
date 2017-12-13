@@ -1,4 +1,5 @@
 PODS:
+  - CVCalendar (1.6.0)
   - Firebase/Auth (4.7.0):
     - Firebase/Core
     - FirebaseAuth (= 4.4.0)
@@ -50,12 +51,14 @@ PODS:
   - nanopb/encode (0.3.8)
 
 DEPENDENCIES:
+  - CVCalendar
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
 
 SPEC CHECKSUMS:
+  CVCalendar: d6da92b579dfc1e0939e324dfffd2e1045cf69b1
   Firebase: dbfb98ccec2dcfcd21ab9cc1b4981a3f3c8c5e26
   FirebaseAnalytics: 5b02a63ead2c3f0259cfc7f15e053e440587ecf8
   FirebaseAuth: cdeee95b528958dbb7dcf220ad0fb804d3a284b0
@@ -68,6 +71,6 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
 
-PODFILE CHECKSUM: 733bf864d3f2c5f2c4ad7d603fafeac339ba48d9
+PODFILE CHECKSUM: d08c2b50aebc4c6efab28cc488dd974ee0a17ccd
 
 COCOAPODS: 1.3.1

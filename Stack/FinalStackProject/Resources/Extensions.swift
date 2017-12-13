@@ -67,6 +67,14 @@ extension Date {
         formatter.dateFormat = "dd - MM - yy"
         return formatter.string(from: self)
     }
+    
+    var getDay: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateFormat = "dd"
+        return dateFormatter.string(from: self)
+    }
 }
 
 extension DateFormatter {

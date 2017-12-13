@@ -75,16 +75,3 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension Date {
-    
-    var getDay:String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .full
-        dateFormatter.timeStyle = .none
-        dateFormatter.dateFormat = "dd"
-        return dateFormatter.string(from: self)
-    }
-    
-}
-
-
