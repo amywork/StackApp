@@ -44,7 +44,7 @@ struct Stack {
         
         guard let dateString = dic["date"] else { return nil }
         let formatter = DateFormatter()
-        formatter.dateFormat = "yy년 MM월 dd일"
+        formatter.dateFormat = "dd - MM - yy"
         let date = formatter.date(from: dateString)
         self.date = date!
         

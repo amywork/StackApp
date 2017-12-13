@@ -6,7 +6,10 @@ import UIKit
 final class GlobalState {
     
     static let shared = GlobalState()
-    private init() { }
+    private init() {
+        let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        print(documentPath)
+    }
     
     enum Constants: String {
         case Explore
@@ -36,8 +39,7 @@ final class GlobalState {
         stackDics.append(dic)
         UserDefaults.standard.set(stackDics, forKey: Constants.Stacks.rawValue)
     }
-    
-    
+
     // MARK: - load data method
     func loadSettingData() {
         let settingDataURL = documentDirectory.appendingPathComponent("Settings.plist")

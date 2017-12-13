@@ -62,11 +62,18 @@ extension UIImage {
 }
 
 extension Date {
-    
     public func string() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yy년 MM월 dd일"
+        formatter.dateFormat = "dd - MM - yy"
         return formatter.string(from: self)
+    }
+}
+
+extension DateFormatter {
+    
+    public func makeDate(with string: String) -> Date? {
+        self.dateFormat = "dd - MM - yy"
+        return self.date(from: string)
     }
     
 }

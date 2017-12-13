@@ -34,7 +34,7 @@ class ListMainController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "✔︎ Your stack list"
+        return "You are now subscribing..."
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -51,7 +51,6 @@ class ListMainController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let cell = sender as? CustomStackCell else { return }
         guard let nextVC = segue.destination as? ListDetailController else { return }
@@ -65,5 +64,9 @@ class ListMainController: UIViewController, UITableViewDelegate, UITableViewData
         self.present(vc, animated: true, completion: nil)
     }
     
+    // Deleting Cell
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
 }
 

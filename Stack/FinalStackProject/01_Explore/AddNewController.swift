@@ -8,31 +8,39 @@
 
 import UIKit
 
-class AddNewController: UIViewController, UITextFieldDelegate, PickerContainerControllerDelegate, cyclePickerControllerDelegate {
-
+class AddNewController: UIViewController, UITextFieldDelegate {
+    
     var name: String?
     var descriptions: String?
-    var selectedDate: Date?
+    
+    var firstBillingDate: Date? {
+        guard let date = firstBillTexField.text else { return nil }
+        let formatter = DateFormatter()
+        let convertedDate = formatter.makeDate(with: date)
+        return convertedDate
+    }
+    
+    var planCycleType: PlanType? {
+        guard let type = cycleTexField.text else { return nil }
+        let planType = PlanType(rawValue: type)
+        return planType
+    }
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
-    
-    @IBOutlet weak var priceTextField: UITextField! // price
-    
+    @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var firstBillPickerView: UIView!
     @IBOutlet weak var firstBillTexField: UITextField!
-    
     @IBOutlet weak var cyclePickerView: UIView!
     @IBOutlet weak var cycleTexField: UITextField!
   
     @IBAction func didTapSaveBtn(_ sender: UIButton) {
-        guard let name = name else { return }
-        guard let date = selectedDate else { return }
-        let planType: PlanType = PlanType.yearly
+        guard let name = nameTextField.text else { return }
+        guard let date = firstBillingDate else { return }
+        guard let planType = planCycleType else { return }
         let price: Float = 10.99
         let newStack = Stack(title: name, planType: planType, date: date, price: price)
         GlobalState.shared.addStack(stack: newStack)
-        
         NotificationCenter.default.post(name: .newStack, object: nil)
         print("GlobalState.shared.addStack(stack: newStack)")
     }
@@ -54,13 +62,6 @@ class AddNewController: UIViewController, UITextFieldDelegate, PickerContainerCo
         return true
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
-        let compSepByCharInSet = string.components(separatedBy: aSet)
-        let numberFiltered = compSepByCharInSet.joined(separator: "")
-        return string == numberFiltered
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
         switch identifier {
@@ -74,34 +75,50 @@ class AddNewController: UIViewController, UITextFieldDelegate, PickerContainerCo
             break
         }
     }
+
+}
+
+extension AddNewController: PickerContainerControllerDelegate, cyclePickerControllerDelegate {
     
     @IBAction func didTapFirstBillTextField(_ sender: UITextField) {
         firstBillPickerView.isHidden = false
         firstBillTexField.isEnabled = false
     }
     
-    func didSelectedDate(_ date: Date) {
-        firstBillTexField.text = date.string()
-        firstBillPickerView.isHidden = true
-        firstBillTexField.isEnabled = true
-        selectedDate = date
-    }
-    
     @IBAction func didTapCycleTexField(_ sender: UITextField) {
         cyclePickerView.isHidden = false
         cycleTexField.isEnabled = false
     }
-
-    func didSelectedType(_ type: String) {
+    
+    func didSelectedPickerItem(_ date: Date) {
+        firstBillTexField.text = date.string()
+    }
+    
+    func didSelectedFirstBillDate() {
+        firstBillPickerView.isHidden = true
+        firstBillTexField.isEnabled = true
+    }
+    
+    func didSelectedPickerItem(_ type: String) {
         cycleTexField.text = type
+    }
+    
+    func didSelectedCycle() {
         cyclePickerView.isHidden = true
         cycleTexField.isEnabled = true
     }
-
+    
 }
 
+
 protocol PickerContainerControllerDelegate {
-    func didSelectedDate(_ date: Date)
+    func didSelectedPickerItem(_ date: Date)
+    func didSelectedFirstBillDate()
+}
+
+protocol cyclePickerControllerDelegate {
+    func didSelectedPickerItem(_ type: String)
+    func didSelectedCycle()
 }
 
 class PickerContainerController: UIViewController {
@@ -110,48 +127,41 @@ class PickerContainerController: UIViewController {
     
     var delegate: PickerContainerControllerDelegate?
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        delegate?.didSelectedDate(firstBillPicker.date)
+    @IBAction func donBtnHandler(_ sender: UIButton) {
+        delegate?.didSelectedPickerItem(firstBillPicker.date)
+        delegate?.didSelectedFirstBillDate()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate?.didSelectedDate(firstBillPicker.date)
+        delegate?.didSelectedPickerItem(firstBillPicker.date)
     }
     
-    @IBAction func donBtnHandler(_ sender: UIButton) {
-        delegate?.didSelectedDate(firstBillPicker.date)
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
-}
-
-
-protocol cyclePickerControllerDelegate {
-    func didSelectedType(_ type: String)
 }
 
 class cyclePickerController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var delegate: cyclePickerControllerDelegate?
-    
     @IBOutlet weak var cyclePicker: UIPickerView!
     
-    private var type: String = ""
- 
-    @IBAction func donBtnHandler(_ sender: UIButton) {
-        delegate?.didSelectedType(type)
-    }
+    var delegate: cyclePickerControllerDelegate?
+    let dataSource: [String] = [PlanType.monthly.rawValue, PlanType.yearly.rawValue]
+    
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    @IBAction func donBtnHandler(_ sender: UIButton) {
+        let selectedRow = cyclePicker.selectedRow(inComponent: 0)
+        let selectedType = dataSource[selectedRow]
+        delegate?.didSelectedPickerItem(selectedType)
+        delegate?.didSelectedCycle()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cyclePicker.dataSource = self
         cyclePicker.delegate = self
-        delegate?.didSelectedType(type)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -159,24 +169,19 @@ class cyclePickerController: UIViewController, UIPickerViewDataSource, UIPickerV
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 2
+        return dataSource.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if row == 0 {
-            return PlanType.monthly.rawValue
-        }else if row == 1 {
-            return PlanType.yearly.rawValue
-        }
-        return nil
+        return dataSource[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if row == 0 {
-            delegate?.didSelectedType(PlanType.monthly.rawValue)
-        }else if row == 1 {
-           delegate?.didSelectedType(PlanType.yearly.rawValue)
-        }
+        delegate?.didSelectedPickerItem(dataSource[row])
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
 }

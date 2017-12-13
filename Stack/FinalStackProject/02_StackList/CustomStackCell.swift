@@ -15,28 +15,23 @@ class CustomStackCell: UITableViewCell {
     @IBOutlet weak var colorView: UIView!
     @IBOutlet weak var detailLabel: UILabel!
     
-    private var payday: String?
     
     var data: Stack? {
-        willSet {
-            self.titleLabel?.text = data?.title
-            self.detailLabel?.text = "\(data?.price)"
-            guard let payday = payday else { return }
-            self.subTitleLabel?.text = "매 월 " + payday + " 일 결제"
+        didSet {
+            guard let data = data else { return }
+            self.titleLabel?.text = data.title
+            self.detailLabel?.text = "$ \(data.price)"
+            self.subTitleLabel?.text = data.planType.rawValue
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        colorView.layer.cornerRadius = colorView.bounds.width/2
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
     }
 
 }

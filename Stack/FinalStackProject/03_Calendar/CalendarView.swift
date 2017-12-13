@@ -10,7 +10,6 @@ import UIKit
 
 enum WeekDay: Int {
     case Sun=0,Mon,Tue,Wed,Thu,Fri,Sat
-   
     var name: String {
         switch self {
         case .Sun:
@@ -41,8 +40,8 @@ struct CalendarDataModel {
     var startWeekDayOfMonth: WeekDay
     var lastDayOfMonth: Int
     
-    private let calendar = Calendar(identifier: .gregorian)
     // Locale, Timezone : default == device default
+    private let calendar = Calendar(identifier: .gregorian)
     
     init?(date: Date) {
         var components = calendar.dateComponents([.year,.month,.day], from: date)
@@ -100,7 +99,7 @@ class CalendarManager {
 
 // MARK : - CalendarView
 @objc protocol CalendarViewDelegate {
-    @objc optional func calendar(_ calendar: CalendarView, didSelectedDate: Date)
+    @objc optional func calendar(_ calendar: CalendarView, didSelectedDate date: Date)
 }
 
 class CalendarView: UIView, CalendarViewDelegate {
@@ -126,6 +125,13 @@ class CalendarView: UIView, CalendarViewDelegate {
         collectionView.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
         return collectionView
     }()
+    
+    var stacks: [Stack] = GlobalState.shared.stakcs
+    var days: [Date] {
+        return stacks.map { (stack) -> Date in
+            return stack.date
+        }
+    }
     
     // MARK : - init
     override func awakeFromNib() {
@@ -193,19 +199,25 @@ extension CalendarView: UICollectionViewDelegate, UICollectionViewDataSource, UI
                 cell.date = calendarDateModel!.newDate(of: day)
             }
             
-            if day == calendarDateModel!.day {
-                cell.highlight()
-            }
+            let mappingDays = days.map({ (date) -> Int in
+                let formatter = DateFormatter()
+                formatter.dateFormat = "dd"
+                let dateStr = formatter.string(from: date)
+                return Int(dateStr)!
+            })
             
-            if day == calendarDateModel!.day + 12 {
+            print(mappingDays)
+            if mappingDays.contains(day) {
                 // 유저가 등록한 날짜일 경우
                 cell.higlightRed()
             }
             
         }
-        
+
         return cell
+    
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
@@ -228,14 +240,14 @@ extension CalendarView: UICollectionViewDelegate, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // 해당 cell의 컬러 바꿔주고
         let cell = collectionView.cellForItem(at: indexPath) as! CustomDateCell
-        cell.dateLabel.textColor = #colorLiteral(red: 0, green: 0.4823529412, blue: 1, alpha: 1)
+        cell.highlight()
         // 해당 cell에 해당하는 stack data를 테이블뷰에 로드함
         delegate?.calendar!(self, didSelectedDate: cell.date!)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CustomDateCell
-        cell.dateLabel.textColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
+        cell.deHighlight()
     }
     
 }
@@ -286,6 +298,10 @@ class CustomDateCell: UICollectionViewCell {
         self.layer.cornerRadius = self.frame.size.width/2
     }
     
+    func deHighlight() {
+        self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    }
+    
     func higlightRed() {
         redBadge.isHidden = false
     }
@@ -320,7 +336,7 @@ class CustomDateCell: UICollectionViewCell {
 
 
 
-// AutoLayout
+// MARK: - CalendarView AutoLayout
 extension UIView {
     
     func autolayout(targetView: UIView, topConstant: CGFloat?, rightConstant: CGFloat?, bottomConstant: CGFloat?, leftConstant: CGFloat?) {

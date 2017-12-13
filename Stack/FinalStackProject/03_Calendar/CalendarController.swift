@@ -10,16 +10,20 @@ class CalendarViewController: UIViewController, CalendarViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    //KEY: MM DD
-    var stacks = ["1111":"Dropbox", "1112":"Dropbox", "1113":"Dropbox", "1114":"Dropbox", "1115":"Dropbox"]
+    /*Filter*/
+    var stacks: [Stack] = GlobalState.shared.stakcs
     
-    func calendar(_ calendar: CalendarView, didSelectedDate: Date) {
-        //didSelectedDate와 매칭하는 값만 테이블뷰 리로드
-        let newList = stacks.filter({ (key,value) in
-            key == didSelectedDate.mmdd
-        })
+    func calendar(_ calendar: CalendarView, didSelectedDate date: Date) {
+        let newList = stacks.filter { (stack) -> Bool in
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd"
+            let stackStr = formatter.string(from: stack.date)
+            let selectedStr = formatter.string(from: date)
+            return stackStr == selectedStr
+        }
         stacks = newList
         tableView.reloadData()
+        stacks = GlobalState.shared.stakcs
     }
     
     /*Calendar*/
@@ -37,6 +41,7 @@ class CalendarViewController: UIViewController, CalendarViewDelegate {
         calendarView.updateNextMonth()
         thisMonthLabel.title = "\(calendarView.year ?? 1). \(calendarView.month ?? 1)"
     }
+    
     @IBAction func toPrevMonth(_ sender: UIButton) {
         calendarView.updatePrevMonth()
         thisMonthLabel.title = "\(calendarView.year ?? 1). \(calendarView.month ?? 1)"
@@ -44,30 +49,39 @@ class CalendarViewController: UIViewController, CalendarViewDelegate {
     
 }
 
+private var palette: [UIColor] = [#colorLiteral(red: 1, green: 0.1607843137, blue: 0.4078431373, alpha: 1),#colorLiteral(red: 0.26, green: 0.47, blue: 0.96, alpha: 1),#colorLiteral(red: 1, green: 0.8, blue: 0, alpha: 1),#colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1),#colorLiteral(red: 0.3882352941, green: 0.8549019608, blue: 0.2196078431, alpha: 1),#colorLiteral(red: 0.8, green: 0.4509803922, blue: 0.8823529412, alpha: 1)]
+
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stacks.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Dropbox"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomStackCell", for: indexPath) as! CustomStackCell
+        cell.titleLabel.text = stacks[indexPath.row].title
+        let index = indexPath.row % 6
+        cell.colorView.backgroundColor = palette[index]
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Upcomings"
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 64
+    }
 }
-
 
 extension Date {
     
-    var mmdd:String {
+    var getDay:String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .full
         dateFormatter.timeStyle = .none
-        dateFormatter.dateFormat = "MMdd"
+        dateFormatter.dateFormat = "dd"
         return dateFormatter.string(from: self)
     }
     
