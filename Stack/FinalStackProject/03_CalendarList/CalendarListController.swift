@@ -12,15 +12,14 @@ import CVCalendar
 class CalendarListController: UIViewController {
     
     var stacks: [Stack] = GlobalState.shared.stakcs
-    var selectedDay: DayView!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet weak var menuView: CVCalendarMenuView!
     @IBOutlet weak var tableView: UITableView!
     
     private var currentCalendar: Calendar?
+    private var selectedDay: DayView!
     private var animationFinished: Bool = true
-    private var palette: [UIColor] = [#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1),#colorLiteral(red: 0.26, green: 0.47, blue: 0.96, alpha: 1),#colorLiteral(red: 1, green: 0.8, blue: 0, alpha: 1),#colorLiteral(red: 1, green: 0.1607843137, blue: 0.4078431373, alpha: 1),#colorLiteral(red: 0.3882352941, green: 0.8549019608, blue: 0.2196078431, alpha: 1),#colorLiteral(red: 0.8, green: 0.4509803922, blue: 0.8823529412, alpha: 1)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +49,9 @@ class CalendarListController: UIViewController {
 
 }
 
-extension CalendarListController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
+extension CalendarListController:
+CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
     
-
     func presentationMode() -> CalendarMode {
         return .monthView
     }
@@ -67,7 +66,8 @@ extension CalendarListController: CVCalendarViewDelegate, CVCalendarMenuViewDele
     }
 
     func dayOfWeekTextColor(by weekday: Weekday) -> UIColor {
-        return weekday == .sunday ? UIColor(red: 1.0, green: 0, blue: 0, alpha: 1.0) : UIColor.black
+        return weekday == .sunday ?
+            UIColor(red: 1.0, green: 0, blue: 0, alpha: 1.0) : UIColor.black
     }
 
     func shouldShowWeekdaysOut() -> Bool {
@@ -119,17 +119,21 @@ extension CalendarListController: CVCalendarViewDelegate, CVCalendarMenuViewDele
             updatedMonthLabel.transform = CGAffineTransform(translationX: 0, y: offset)
             updatedMonthLabel.transform = CGAffineTransform(scaleX: 1, y: 0.1)
 
-            UIView.animate(withDuration: 0.35, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            UIView.animate(withDuration: 0.35,
+                           delay: 0,
+                           options: .curveEaseIn,
+                           animations: {
                 self.animationFinished = false
-                self.monthLabel.transform = CGAffineTransform(translationX: 0, y: -offset)
-                self.monthLabel.transform = CGAffineTransform(scaleX: 1, y: 0.1)
+                self.monthLabel.transform = CGAffineTransform(translationX: 0,
+                                                              y: -offset)
+                self.monthLabel.transform = CGAffineTransform(scaleX: 1,
+                                                              y: 0.1)
                 self.monthLabel.alpha = 0
 
                 updatedMonthLabel.alpha = 1
                 updatedMonthLabel.transform = CGAffineTransform.identity
 
             }) { _ in
-
                 self.animationFinished = true
                 self.monthLabel.frame = updatedMonthLabel.frame
                 self.monthLabel.text = updatedMonthLabel.text
@@ -138,7 +142,8 @@ extension CalendarListController: CVCalendarViewDelegate, CVCalendarMenuViewDele
                 updatedMonthLabel.removeFromSuperview()
             }
 
-            self.view.insertSubview(updatedMonthLabel, aboveSubview: self.monthLabel)
+            self.view.insertSubview(updatedMonthLabel,
+                                    aboveSubview: self.monthLabel)
         }
     }
 
