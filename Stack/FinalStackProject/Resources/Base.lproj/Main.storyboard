@@ -190,7 +190,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93739813566207886" green="0.93689405918121338" blue="0.95686668157577515" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="fJH-yR-0ch" firstAttribute="top" secondItem="psw-eo-55W" secondAttribute="top" constant="68" id="CQE-OA-U1B"/>
+                            <constraint firstItem="fJH-yR-0ch" firstAttribute="top" secondItem="AcA-Z8-qDH" secondAttribute="top" constant="4" id="CQE-OA-U1B"/>
                             <constraint firstItem="NNr-6h-kw2" firstAttribute="leading" secondItem="AcA-Z8-qDH" secondAttribute="leading" id="E8T-j3-v04"/>
                             <constraint firstItem="fJH-yR-0ch" firstAttribute="leading" secondItem="AcA-Z8-qDH" secondAttribute="leading" id="GC6-uL-0pF"/>
                             <constraint firstItem="NNr-6h-kw2" firstAttribute="trailing" secondItem="AcA-Z8-qDH" secondAttribute="trailing" id="M9Y-mZ-u7F"/>
@@ -448,7 +448,6 @@
         <!--Setting-->
         <scene sceneID="v4g-cA-BRx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dQq-4J-XhO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kgi-7u-IMY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Setting" image="SettingOn" id="5a7-EG-vMA"/>
                     <toolbarItems/>
@@ -461,6 +460,7 @@
                         <segue destination="UoX-rD-TF4" kind="relationship" relationship="rootViewController" id="4kb-dM-f6D"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dQq-4J-XhO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1439" y="-2369"/>
         </scene>

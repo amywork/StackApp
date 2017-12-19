@@ -26,4 +26,5 @@ class SearchResultsController: ExploreController, UISearchResultsUpdating  {
         guard searchController.isActive else { return }
         filterString = searchController.searchBar.text
     }
+    
 }
