@@ -54,3 +54,11 @@ struct Stack {
     }
 
 }
+
+
+extension Stack: Equatable {
+    static func ==(lhs: Stack, rhs: Stack) -> Bool {
+        return lhs.dictionary == rhs.dictionary
+    }
+}
+

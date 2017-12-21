@@ -26,11 +26,20 @@ final class GlobalState {
     var settings: [Setting] = []
     
     var stakcs: [Stack] {
-        let stackDics: [[String:String]] = UserDefaults.standard.array(forKey: Constants.Stacks.rawValue) as? [[String:String]] ?? []
-        let stacks = stackDics.flatMap { (stackDic) -> Stack? in
-            return Stack(with: stackDic)
+        get {
+            let stackDics: [[String:String]] = UserDefaults.standard.array(forKey: Constants.Stacks.rawValue) as? [[String:String]] ?? []
+            let stacks = stackDics.flatMap { (stackDic) -> Stack? in
+                return Stack(with: stackDic)
+            }
+            return stacks
+        }set {
+            let newStacks = newValue
+            var newDicArr: [[String:String]] = []
+            newStacks.forEach { (stack) in
+                return newDicArr.append(stack.dictionary)
+            }
+            UserDefaults.standard.set(newDicArr, forKey: Constants.Stacks.rawValue)
         }
-        return stacks
     }
     
     func addStack(stack: Stack){
@@ -39,7 +48,7 @@ final class GlobalState {
         stackDics.append(dic)
         UserDefaults.standard.set(stackDics, forKey: Constants.Stacks.rawValue)
     }
-
+    
     // MARK: - load data method
     func loadSettingData() {
         let settingDataURL = documentDirectory.appendingPathComponent("Settings.plist")
@@ -58,3 +67,4 @@ final class GlobalState {
     }
 
 }
+

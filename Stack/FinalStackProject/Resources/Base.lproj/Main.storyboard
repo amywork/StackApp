@@ -942,6 +942,7 @@
                         <outlet property="firstBillTexField" destination="tyh-q2-KbL" id="Ojs-Kg-YH6"/>
                         <outlet property="nameTextField" destination="gcT-P0-N5D" id="SH3-az-kpz"/>
                         <outlet property="priceTextField" destination="f7J-Hj-iKe" id="llg-RY-mo7"/>
+                        <outlet property="saveButton" destination="hHv-zL-WK7" id="es1-fq-HaO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aeN-z8-2B1" userLabel="First Responder" sceneMemberID="firstResponder"/>

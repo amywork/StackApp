@@ -79,6 +79,7 @@ extension ListMainController: UITableViewDelegate, UITableViewDataSource {
         vc.navigationItem.title = "Edit Your Subscriptions"
         let selectedStack = stacks[indexPath.row]
         vc.selectedStackData = selectedStack
+        vc.type = .Edit
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

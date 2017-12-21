@@ -8,7 +8,14 @@
 
 import UIKit
 
+enum StackDetailType {
+    case Add
+    case Edit
+}
+
 class AddNewController: UIViewController, UITextFieldDelegate {
+    
+    var type: StackDetailType = .Add
     
     var name: String?
     var descriptions: String?
@@ -34,16 +41,31 @@ class AddNewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var firstBillTexField: UITextField!
     @IBOutlet weak var cyclePickerView: UIView!
     @IBOutlet weak var cycleTexField: UITextField!
+    @IBOutlet weak var saveButton: UIButton!
   
     @IBAction func didTapSaveBtn(_ sender: UIButton) {
         guard let name = nameTextField.text else { return }
         guard let date = firstBillingDate else { return }
         guard let planType = planCycleType else { return }
-        let price: Float = 10.99
+        guard let priceText = priceTextField.text, let price = Float(priceText)  else { return }
         let newStack = Stack(title: name, planType: planType, date: date, price: price)
-        GlobalState.shared.addStack(stack: newStack)
+        
+        switch type {
+        case .Add:
+            GlobalState.shared.addStack(stack: newStack)
+            self.dismiss(animated: true, completion: nil)
+        case .Edit:
+            guard let selectedStack = selectedStackData else { return }
+            var filteredStacks = GlobalState.shared.stakcs.filter({ (stack) -> Bool in
+                return stack != selectedStack
+            })
+            filteredStacks.append(newStack)
+            GlobalState.shared.stakcs = filteredStacks
+            self.navigationController?.popViewController(animated: true)
+        }
+        
         NotificationCenter.default.post(name: .newStack, object: nil)
-        print("GlobalState.shared.addStack(stack: newStack)")
+        
     }
 
     override func viewDidLoad() {
@@ -51,6 +73,20 @@ class AddNewController: UIViewController, UITextFieldDelegate {
         if let data = selectedStackData {
             configureUI(data: data)
         }
+        configureTextFields()
+        configureButton()
+    }
+    
+    func configureButton() {
+        switch type {
+        case .Add:
+            saveButton.setTitle("Add", for: .normal)
+        case .Edit:
+            saveButton.setTitle("Edit", for: .normal)
+        }
+    }
+    
+    func configureTextFields() {
         cycleTexField.delegate = self
         firstBillTexField.tintColor = .clear
         cycleTexField.tintColor = .clear
@@ -60,7 +96,6 @@ class AddNewController: UIViewController, UITextFieldDelegate {
         self.descriptionTextView.text = descriptions
         nameTextField.isEnabled = false
         descriptionTextView.isEditable = false
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -26,6 +26,15 @@ class CalendarListController: UIViewController {
         if let currentCalendar = currentCalendar {
             monthLabel.text = CVDate(date: Date(), calendar: currentCalendar).globalDescription
         }
+        
+        NotificationCenter.default
+            .addObserver(forName: .newStack, object: nil, queue: nil) { (noti) in
+                self.stacks = GlobalState.shared.stakcs
+                DispatchQueue.main.async {
+                    self.calendarView.reloadInputViews()
+                    self.tableView.reloadData()
+                }
+        }
     }
     
     override func awakeFromNib() {
@@ -36,17 +45,18 @@ class CalendarListController: UIViewController {
             currentCalendar?.timeZone = timeZone
         }
     }
-
+    
     @IBAction func refreshMonth(sender: AnyObject) {
         calendarView.contentController.refreshPresentedMonth()
     }
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         calendarView.commitCalendarViewUpdate()
         menuView.commitMenuViewUpdate()
     }
-
+    
+    
 }
 
 extension CalendarListController:
