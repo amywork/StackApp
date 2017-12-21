@@ -11,7 +11,7 @@
 		4B3BA2EF1FB33A950033E061 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BA2EE1FB33A950033E061 /* CalendarController.swift */; };
 		4B3BA3081FB481BB0033E061 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BA3071FB481BB0033E061 /* Stack.swift */; };
 		4B3CBB521FB5120E00E7CA84 /* Explore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3CBB511FB5120E00E7CA84 /* Explore.swift */; };
-		4B4208071F9E024A009F90C4 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B72C2E51F9A29160045EC9E /* Settings.plist */; };
+		4B4404CD1FEBEC9F00FFCC77 /* Setting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B4404CC1FEBEC9F00FFCC77 /* Setting.plist */; };
 		4B4526451FDA8B9D00479802 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B4526441FDA8B9D00479802 /* GoogleService-Info.plist */; };
 		4B51043D1FE0F8F7001141C6 /* CalendarListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B51043C1FE0F8F7001141C6 /* CalendarListController.swift */; };
 		4B72C2B11F9A09320045EC9E /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B72C2B01F9A09320045EC9E /* Setting.swift */; };
@@ -42,11 +42,11 @@
 		4B3BA2EE1FB33A950033E061 /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
 		4B3BA3071FB481BB0033E061 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		4B3CBB511FB5120E00E7CA84 /* Explore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Explore.swift; sourceTree = "<group>"; };
+		4B4404CC1FEBEC9F00FFCC77 /* Setting.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Setting.plist; sourceTree = "<group>"; };
 		4B4526441FDA8B9D00479802 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4B51043C1FE0F8F7001141C6 /* CalendarListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarListController.swift; sourceTree = "<group>"; };
 		4B72C2B01F9A09320045EC9E /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		4B72C2B21F9A11E10045EC9E /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
-		4B72C2E51F9A29160045EC9E /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
 		4B769A7D1FDA8DCF00F43BBC /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		4B769A7F1FDA8DFE00F43BBC /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
 		4B9039E11FD6436E008813EF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -168,8 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				DD81677A1F96E8FE00A80891 /* Info.plist */,
-				4B72C2E51F9A29160045EC9E /* Settings.plist */,
 				4B4526441FDA8B9D00479802 /* GoogleService-Info.plist */,
+				4B4404CC1FEBEC9F00FFCC77 /* Setting.plist */,
 				DD81676E1F96E8FE00A80891 /* AppDelegate.swift */,
 				DD8167821F96E92500A80891 /* Resources */,
 				DD81679B1F97351D00A80891 /* DataSource */,
@@ -285,8 +285,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B4208071F9E024A009F90C4 /* Settings.plist in Resources */,
 				DD8167881F96ECA000A80891 /* Assets.xcassets in Resources */,
+				4B4404CD1FEBEC9F00FFCC77 /* Setting.plist in Resources */,
 				4B4526451FDA8B9D00479802 /* GoogleService-Info.plist in Resources */,
 				DD8167741F96E8FE00A80891 /* Main.storyboard in Resources */,
 			);

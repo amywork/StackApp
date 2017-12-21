@@ -10,11 +10,12 @@ import UIKit
 class SettingController: UIViewController {
     
     // MARK: - Data Property
-    var data:Setting?
+    var settingData: [Setting]?
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        settingData = GlobalState.shared.settings
     }
 }
 
@@ -28,12 +29,12 @@ extension SettingController: SettingCellDelegate {
 // MARK: - TableView Source
 extension SettingController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return GlobalState.shared.settings.count
+        return settingData?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data = GlobalState.shared.settings[section]
-        return data?.cellContentList.count ?? 0
+        guard let data = settingData?[section] else { return 0 }
+        return data.cellContentList.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

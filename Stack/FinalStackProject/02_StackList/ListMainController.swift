@@ -76,11 +76,20 @@ extension ListMainController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "AddNewController") as! AddNewController
-        vc.navigationItem.title = "Edit Your Subscriptions"
+        let cancelBtn = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(dissmissEditController))
+        cancelBtn.tintColor = #colorLiteral(red: 1, green: 0.1607843137, blue: 0.4078431373, alpha: 1)
+        let navi = UINavigationController(rootViewController: vc)
+        vc.navigationItem.title = "Edit Stack"
+        vc.navigationItem.rightBarButtonItem = cancelBtn
         let selectedStack = stacks[indexPath.row]
         vc.selectedStackData = selectedStack
         vc.type = .Edit
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.present(navi, animated: true, completion: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    @objc func dissmissEditController() {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

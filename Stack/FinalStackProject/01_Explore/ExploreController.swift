@@ -19,8 +19,13 @@ class ExploreController: UIViewController {
     var allResults: [Explore] = GlobalState.shared.explores
     var visibleResults: [Explore] = []
     
+    var refreshControl: UIRefreshControl?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.refreshControl = refreshControl
         // Create the search results view controller and use it for the `UISearchController`.
         let searchResultsController = storyboard!.instantiateViewController(withIdentifier: SearchResultsController.StoryboardConstants.identifier) as! SearchResultsController
         // Create the search controller and make it perform the results updating.
@@ -44,6 +49,19 @@ class ExploreController: UIViewController {
         }
         
     }
+    
+    @objc func refresh() {
+        App.api.fetchExplores { (isSuccess) in
+            if isSuccess {
+                self.allResults = GlobalState.shared.explores
+                DispatchQueue.main.async {
+                    self.filterString = nil
+                    self.refreshControl?.endRefreshing()
+                }
+            }
+        }
+    }
+    
     
     /// A `nil` / empty filter string means show all results. Otherwise, show only results containing the filter.
     var filterString: String? = nil {

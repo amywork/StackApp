@@ -8,6 +8,7 @@ final class GlobalState {
     static let shared = GlobalState()
     private init() {
         let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        loadSettingData()
         print(documentPath)
     }
     
@@ -51,12 +52,12 @@ final class GlobalState {
     
     // MARK: - load data method
     func loadSettingData() {
-        let settingDataURL = documentDirectory.appendingPathComponent("Settings.plist")
+        let settingDataURL = documentDirectory.appendingPathComponent("Setting.plist")
         let settingDataPath = settingDataURL.path
         print(settingDataPath)
         
         if !FileManager.default.fileExists(atPath: settingDataPath) {
-            guard let plistURL = Bundle.main.url(forResource: "Settings", withExtension: "plist") else { return }
+            guard let plistURL = Bundle.main.url(forResource: "Setting", withExtension: "plist") else { return }
             try! FileManager.default.copyItem(at: plistURL, to: settingDataURL)
         }
         
