@@ -9,6 +9,7 @@
 ## What is a Stack app?
 - Stack app is an iOS application which tracks your online subscriptions systematically.
 - There are more and more subscription business models around the world. It’s time to manage them in a smart way. 😎
+- **At this point, Stack is a personal toy project.** I'd like to launch app in the future, but I don't know when it will be. 
 
 
 ![STACK2](https://github.com/younari/StackApp/blob/master/_IMAGES/STACK2.png)
@@ -48,6 +49,9 @@
 * `pod 'Kingfisher', '~> 4.0'` [Kingfisher for image caching](https://github.com/onevcat/Kingfisher)
 
 
+## Log
+- 2017.11 ::  *Setting up main tab bars*
+- 2017.12 :: *Structure core interfaces*
 
 <br>
 <br>
