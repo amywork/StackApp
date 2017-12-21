@@ -78,10 +78,7 @@ extension ListMainController: UITableViewDelegate, UITableViewDataSource {
         let vc = sb.instantiateViewController(withIdentifier: "AddNewController") as! AddNewController
         vc.navigationItem.title = "Edit Your Subscriptions"
         let selectedStack = stacks[indexPath.row]
-        vc.name = selectedStack.title
-        vc.priceTextField.text = "\(selectedStack.price)"
-        vc.cycleTexField.text = selectedStack.planType.rawValue
-        vc.firstBillTexField.text = selectedStack.date.string()
+        vc.selectedStackData = selectedStack
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

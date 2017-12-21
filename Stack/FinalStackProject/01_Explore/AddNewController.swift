@@ -12,7 +12,8 @@ class AddNewController: UIViewController, UITextFieldDelegate {
     
     var name: String?
     var descriptions: String?
-    
+    var selectedStackData: Stack?
+
     var firstBillingDate: Date? {
         guard let date = firstBillTexField.text else { return nil }
         let formatter = DateFormatter()
@@ -47,6 +48,9 @@ class AddNewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let data = selectedStackData {
+            configureUI(data: data)
+        }
         cycleTexField.delegate = self
         firstBillTexField.tintColor = .clear
         cycleTexField.tintColor = .clear
@@ -56,6 +60,7 @@ class AddNewController: UIViewController, UITextFieldDelegate {
         self.descriptionTextView.text = descriptions
         nameTextField.isEnabled = false
         descriptionTextView.isEditable = false
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -74,6 +79,13 @@ class AddNewController: UIViewController, UITextFieldDelegate {
         default:
             break
         }
+    }
+    
+    func configureUI(data: Stack) {
+        name = data.title
+        priceTextField.text = "\(data.price)"
+        cycleTexField.text = data.planType.rawValue
+        firstBillTexField.text = data.date.string()
     }
 
 }
