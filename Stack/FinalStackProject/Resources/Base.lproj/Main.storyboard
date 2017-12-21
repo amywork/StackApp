@@ -1041,7 +1041,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D6e-Ug-udI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1366" y="-4735"/>
+            <point key="canvasLocation" x="1470" y="-4722"/>
         </scene>
         <!--Cycle Picker Controller-->
         <scene sceneID="k3U-hP-tHx">
@@ -1090,7 +1090,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mDo-uB-WFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1365.5999999999999" y="-5155.3223388305851"/>
+            <point key="canvasLocation" x="1471" y="-5216"/>
         </scene>
     </scenes>
     <resources>

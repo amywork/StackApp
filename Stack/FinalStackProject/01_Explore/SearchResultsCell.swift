@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchResultsCell: UITableViewCell {
 
@@ -22,11 +23,11 @@ class SearchResultsCell: UITableViewCell {
     }
     
     func configureCell() {
-        
+
+        let image = UIImage(named: "placeHolder")
         if let imageURL = data?.imageURL {
-            self.iconImageView.loadImage(URLstring: imageURL)
+            self.iconImageView.kf.setImage(with: URL(string: imageURL)!, placeholder: image)
         }
-        
         self.titleLabel.text = data?.title
         self.subTitleLabel.text = data?.URL
 
