@@ -194,7 +194,7 @@ CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
         ringLayer.lineWidth = ringLineWidth
         ringLayer.strokeColor = ringLineColour.cgColor
 
-        let centrePoint = CGPoint(x: newView.bounds.width * 0.8, y: 0)
+        let centrePoint = CGPoint(x: newView.bounds.width * 0.8, y: 8)
         let startAngle = CGFloat(-π/2.0)
         let endAngle = CGFloat(π * 2.0) + startAngle
         let ringPath = UIBezierPath(arcCenter: centrePoint,
@@ -306,7 +306,7 @@ extension CalendarListController: UITableViewDelegate, UITableViewDataSource {
    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomStackCell", for: indexPath) as! CustomStackCell
-        cell.titleLabel.text = stacks[indexPath.row].title
+        cell.data = stacks[indexPath.row]
         let index = indexPath.row % 6
         cell.colorView.backgroundColor = palette[index]
         return cell

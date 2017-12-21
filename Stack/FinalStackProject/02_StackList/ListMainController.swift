@@ -18,10 +18,10 @@ class ListMainController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationItem.title = "My Stack"
-        self.navigationController?.navigationItem.rightBarButtonItem
+        /*self.navigationController?.navigationItem.rightBarButtonItem
             = UIBarButtonItem(barButtonSystemItem: .add,
                               target: self,
-                              action: #selector(addController))
+                              action: #selector(addController))*/
         
         NotificationCenter.default
             .addObserver(forName: .newStack, object: nil, queue: nil) { (noti) in
@@ -58,24 +58,42 @@ extension ListMainController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let cell = sender as? CustomStackCell else { return }
-        guard let nextVC = segue.destination as? ListDetailController else { return }
-        nextVC.data = cell.data
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
-    // Deleting Cell
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return .delete
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .default,
+                                                title: "Delete",
+                                                handler: { (action , indexPath) -> Void in
+            // Deleting Cell
+        })
+        
+        deleteAction.backgroundColor = UIColor.red
+        return [deleteAction]
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "AddNewController") as! AddNewController
+        vc.navigationItem.title = "Edit Your Subscriptions"
+        let selectedStack = stacks[indexPath.row]
+        vc.name = selectedStack.title
+        vc.priceTextField.text = "\(selectedStack.price)"
+        vc.cycleTexField.text = selectedStack.planType.rawValue
+        vc.firstBillTexField.text = selectedStack.date.string()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
 
 extension ListMainController {
+    /* Add Custom
     @objc func addController() {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "AddCustomController")
         vc.navigationItem.title = "Add Custom"
         self.present(vc, animated: true, completion: nil)
     }
+     */
 }

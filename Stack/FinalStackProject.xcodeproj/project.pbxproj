@@ -23,7 +23,6 @@
 		4BAE87401FAAB8D2007A0ED7 /* SearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE873F1FAAB8D2007A0ED7 /* SearchResultsCell.swift */; };
 		4BB34C2C1FDA73F500382A11 /* AddNewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB34C2B1FDA73F400382A11 /* AddNewController.swift */; };
 		4BE462D81F9AA6B000E593C9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE462D71F9AA6B000E593C9 /* MainTabBarController.swift */; };
-		4BFF2B7E1F9AE34B00B1C150 /* ListDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFF2B7D1F9AE34B00B1C150 /* ListDetailController.swift */; };
 		5CF76A8C73B2D6E2E4902C54 /* Pods_FinalStackProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E737C49BE85561C3F4BC5B0C /* Pods_FinalStackProject.framework */; };
 		DD7267941FB41A1400514E72 /* CustomStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7267931FB41A1400514E72 /* CustomStackCell.swift */; };
 		DD7267961FB41CA500514E72 /* ListMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7267951FB41CA500514E72 /* ListMainController.swift */; };
@@ -55,7 +54,6 @@
 		4BAE873F1FAAB8D2007A0ED7 /* SearchResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsCell.swift; sourceTree = "<group>"; };
 		4BB34C2B1FDA73F400382A11 /* AddNewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewController.swift; sourceTree = "<group>"; };
 		4BE462D71F9AA6B000E593C9 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		4BFF2B7D1F9AE34B00B1C150 /* ListDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailController.swift; sourceTree = "<group>"; };
 		6CC18B5FEF1A916FCD57201E /* Pods-FinalStackProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalStackProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinalStackProject/Pods-FinalStackProject.debug.xcconfig"; sourceTree = "<group>"; };
 		DD7267931FB41A1400514E72 /* CustomStackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackCell.swift; sourceTree = "<group>"; };
 		DD7267951FB41CA500514E72 /* ListMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMainController.swift; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 			children = (
 				DD7267931FB41A1400514E72 /* CustomStackCell.swift */,
 				DD7267951FB41CA500514E72 /* ListMainController.swift */,
-				4BFF2B7D1F9AE34B00B1C150 /* ListDetailController.swift */,
 			);
 			path = 02_StackList;
 			sourceTree = "<group>";
@@ -387,7 +384,6 @@
 				4BE462D81F9AA6B000E593C9 /* MainTabBarController.swift in Sources */,
 				4B9039E21FD6436E008813EF /* Extensions.swift in Sources */,
 				DD81676F1F96E8FE00A80891 /* AppDelegate.swift in Sources */,
-				4BFF2B7E1F9AE34B00B1C150 /* ListDetailController.swift in Sources */,
 				4BAE873C1FAAA933007A0ED7 /* SearchResultsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
