@@ -7,7 +7,8 @@
 //
 
 import UIKit
-class SettingController: UIViewController {
+class SettingController: UIViewController,RouterProtocol {
+    static var storyboardName: String = "Main"
     
     // MARK: - Data Property
     var settingData: [Setting]?

@@ -70,6 +70,7 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - PageController (0.8.5)
 
 DEPENDENCIES:
   - CVCalendar
@@ -78,6 +79,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - Kingfisher (~> 4.0)
+  - PageController
 
 SPEC CHECKSUMS:
   CVCalendar: 505c11b11a088b43f159806e791eba1c2540853b
@@ -95,7 +97,8 @@ SPEC CHECKSUMS:
   Kingfisher: 868c1149679a7ab6869be118faa9b5aed154aaf0
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  PageController: 5fc0d874dea1fdf9f585bacc0cb3a9c9fc7b5bf9
 
-PODFILE CHECKSUM: d35710769ec29f9964a833ca84b7e4cb018613a4
+PODFILE CHECKSUM: c9248d31fbd874f0047690e472c04acd384b6736
 
 COCOAPODS: 1.4.0

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C0d-Hq-MFl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Explore-->
         <scene sceneID="jCJ-0d-CEc">
             <objects>
-                <viewController id="TV9-fD-X2d" customClass="ExploreController" customModule="FinalStackProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExploreController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TV9-fD-X2d" customClass="ExploreController" customModule="FinalStackProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gNY-fF-zv2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -96,7 +96,7 @@
         <!--My Stack-->
         <scene sceneID="T5m-g0-Dw7">
             <objects>
-                <viewController id="1bF-Sz-L2B" customClass="ListMainController" customModule="FinalStackProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ListMainController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1bF-Sz-L2B" customClass="ListMainController" customModule="FinalStackProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="psw-eo-55W">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -211,7 +211,7 @@
         <!--Setting-->
         <scene sceneID="p9F-OH-8Xe">
             <objects>
-                <viewController id="UoX-rD-TF4" customClass="SettingController" customModule="FinalStackProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UoX-rD-TF4" customClass="SettingController" customModule="FinalStackProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2sU-Lv-pi7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -480,7 +480,7 @@
         <!--Animator Delegate-->
         <scene sceneID="8hj-Ki-JzH">
             <objects>
-                <viewController id="Z2e-Lx-SUt" customClass="CalendarListController" customModule="FinalStackProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalendarListController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Z2e-Lx-SUt" customClass="CalendarListController" customModule="FinalStackProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gf6-y8-oCA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -947,10 +947,10 @@
             </objects>
             <point key="canvasLocation" x="262" y="-4171"/>
         </scene>
-        <!--View Controller-->
+        <!--MainViewController-->
         <scene sceneID="vVf-lr-goT">
             <objects>
-                <viewController id="bVT-RF-QjF" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" title="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bVT-RF-QjF" customClass="MainViewController" customModule="FinalStackProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iJv-1U-KUr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -961,7 +961,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wnb-ea-kRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3066" y="-3297"/>
+            <point key="canvasLocation" x="-2873" y="-4021"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="brh-Ff-zid">
@@ -978,7 +978,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oyz-Ux-uqz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3878" y="-3297"/>
+            <point key="canvasLocation" x="-3686" y="-4021"/>
         </scene>
     </scenes>
     <resources>

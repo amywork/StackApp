@@ -9,7 +9,8 @@
 import UIKit
 var palette: [UIColor] = [#colorLiteral(red: 1, green: 0.1607843137, blue: 0.4078431373, alpha: 1),#colorLiteral(red: 0.26, green: 0.47, blue: 0.96, alpha: 1),#colorLiteral(red: 1, green: 0.8, blue: 0, alpha: 1),#colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1),#colorLiteral(red: 0.3882352941, green: 0.8549019608, blue: 0.2196078431, alpha: 1),#colorLiteral(red: 0.8, green: 0.4509803922, blue: 0.8823529412, alpha: 1)]
 
-class ListMainController: UIViewController {
+class ListMainController: UIViewController, RouterProtocol {
+    static var storyboardName: String = "Main"
     
     @IBOutlet weak var itemTableView: UITableView!
     lazy var stacks = GlobalState.shared.stakcs

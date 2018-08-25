@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ExploreController: UIViewController {
+class ExploreController: UIViewController, RouterProtocol {
+    static var storyboardName: String = "Main"
+    
 
     struct TableViewConstants {
         static let tableViewCellIdentifier = "SearchResultsCell"

@@ -10,6 +10,7 @@ target 'FinalStackProject' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Storage'
 	pod 'CVCalendar'
+	pod 'PageController'
 	pod 'Kingfisher', '~> 4.0'
 
   # Pods for FinalStackProject

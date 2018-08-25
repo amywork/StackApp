@@ -9,7 +9,8 @@
 import UIKit
 import CVCalendar
 
-class CalendarListController: UIViewController {
+class CalendarListController: UIViewController, RouterProtocol {
+    static var storyboardName: String = "Main"
     
     var stacks: [Stack] = GlobalState.shared.stakcs
     @IBOutlet weak var monthLabel: UILabel!
