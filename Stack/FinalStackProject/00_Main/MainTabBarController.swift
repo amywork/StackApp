@@ -8,11 +8,11 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
+class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        NavigationManager.shared.mainNavigation = self.navigationController
     }
     
 }

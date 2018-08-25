@@ -29,7 +29,7 @@ final class GlobalState {
     var stakcs: [Stack] {
         get {
             let stackDics: [[String:String]] = UserDefaults.standard.array(forKey: Constants.Stacks.rawValue) as? [[String:String]] ?? []
-            let stacks = stackDics.flatMap { (stackDic) -> Stack? in
+            let stacks = stackDics.compactMap { (stackDic) -> Stack? in
                 return Stack(with: stackDic)
             }
             return stacks

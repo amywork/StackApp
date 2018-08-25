@@ -34,7 +34,7 @@ extension SettingController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let data = settingData?[section] else { return 0 }
-        return data.cellContentList.count ?? 0
+        return data.cellContentList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

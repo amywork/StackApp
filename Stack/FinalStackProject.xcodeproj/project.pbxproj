@@ -19,6 +19,13 @@
 		4B769A7E1FDA8DCF00F43BBC /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B769A7D1FDA8DCF00F43BBC /* App.swift */; };
 		4B769A801FDA8DFE00F43BBC /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B769A7F1FDA8DFE00F43BBC /* FirebaseAPI.swift */; };
 		4B9039E21FD6436E008813EF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9039E11FD6436E008813EF /* Extensions.swift */; };
+		4BA6EAA121316D15007612AD /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA6EAA021316D15007612AD /* NavigationManager.swift */; };
+		4BA6EAA321316D7E007612AD /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA6EAA221316D7E007612AD /* PopAnimator.swift */; };
+		4BA6EAA521316D89007612AD /* PushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA6EAA421316D89007612AD /* PushAnimator.swift */; };
+		4BA6EAA721316DA6007612AD /* SnapShotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA6EAA621316DA6007612AD /* SnapShotView.swift */; };
+		4BA6EAAB213170A2007612AD /* extensionUICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA6EAAA213170A2007612AD /* extensionUICollectionView.swift */; };
+		4BA6EAAD2131721D007612AD /* extensionUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA6EAAC2131721D007612AD /* extensionUIViewController.swift */; };
+		4BA6EAAF21317236007612AD /* extensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA6EAAE21317236007612AD /* extensionUIView.swift */; };
 		4BAE873C1FAAA933007A0ED7 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE873B1FAAA933007A0ED7 /* SearchResultsController.swift */; };
 		4BAE87401FAAB8D2007A0ED7 /* SearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE873F1FAAB8D2007A0ED7 /* SearchResultsCell.swift */; };
 		4BB34C2C1FDA73F500382A11 /* AddNewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB34C2B1FDA73F400382A11 /* AddNewController.swift */; };
@@ -50,6 +57,13 @@
 		4B769A7D1FDA8DCF00F43BBC /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		4B769A7F1FDA8DFE00F43BBC /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
 		4B9039E11FD6436E008813EF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4BA6EAA021316D15007612AD /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
+		4BA6EAA221316D7E007612AD /* PopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
+		4BA6EAA421316D89007612AD /* PushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushAnimator.swift; sourceTree = "<group>"; };
+		4BA6EAA621316DA6007612AD /* SnapShotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapShotView.swift; sourceTree = "<group>"; };
+		4BA6EAAA213170A2007612AD /* extensionUICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionUICollectionView.swift; sourceTree = "<group>"; };
+		4BA6EAAC2131721D007612AD /* extensionUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionUIViewController.swift; sourceTree = "<group>"; };
+		4BA6EAAE21317236007612AD /* extensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionUIView.swift; sourceTree = "<group>"; };
 		4BAE873B1FAAA933007A0ED7 /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		4BAE873F1FAAB8D2007A0ED7 /* SearchResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsCell.swift; sourceTree = "<group>"; };
 		4BB34C2B1FDA73F400382A11 /* AddNewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewController.swift; sourceTree = "<group>"; };
@@ -171,6 +185,13 @@
 				4B4526441FDA8B9D00479802 /* GoogleService-Info.plist */,
 				4B4404CC1FEBEC9F00FFCC77 /* Setting.plist */,
 				DD81676E1F96E8FE00A80891 /* AppDelegate.swift */,
+				4BA6EAA021316D15007612AD /* NavigationManager.swift */,
+				4BA6EAA221316D7E007612AD /* PopAnimator.swift */,
+				4BA6EAA421316D89007612AD /* PushAnimator.swift */,
+				4BA6EAA621316DA6007612AD /* SnapShotView.swift */,
+				4BA6EAAA213170A2007612AD /* extensionUICollectionView.swift */,
+				4BA6EAAC2131721D007612AD /* extensionUIViewController.swift */,
+				4BA6EAAE21317236007612AD /* extensionUIView.swift */,
 				DD8167821F96E92500A80891 /* Resources */,
 				DD81679B1F97351D00A80891 /* DataSource */,
 				4B3BA3091FB483070033E061 /* 00_Main */,
@@ -322,7 +343,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-FinalStackProject/Pods-FinalStackProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CVCalendar/CVCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -331,7 +352,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CVCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -367,11 +388,16 @@
 				4B3CBB521FB5120E00E7CA84 /* Explore.swift in Sources */,
 				4B3BA2EF1FB33A950033E061 /* CalendarController.swift in Sources */,
 				4B3BA2EC1FB33A640033E061 /* CalendarView.swift in Sources */,
+				4BA6EAA521316D89007612AD /* PushAnimator.swift in Sources */,
 				DD8167931F97014400A80891 /* CustomTextField.swift in Sources */,
 				4B72C2B31F9A11E10045EC9E /* SettingTableViewCell.swift in Sources */,
+				4BA6EAAB213170A2007612AD /* extensionUICollectionView.swift in Sources */,
 				4B769A801FDA8DFE00F43BBC /* FirebaseAPI.swift in Sources */,
 				4BB34C2C1FDA73F500382A11 /* AddNewController.swift in Sources */,
 				DDB290E61F9DB23B005E438D /* HandlingErrorVC.swift in Sources */,
+				4BA6EAAF21317236007612AD /* extensionUIView.swift in Sources */,
+				4BA6EAA721316DA6007612AD /* SnapShotView.swift in Sources */,
+				4BA6EAA121316D15007612AD /* NavigationManager.swift in Sources */,
 				4B3BA3081FB481BB0033E061 /* Stack.swift in Sources */,
 				4B769A7E1FDA8DCF00F43BBC /* App.swift in Sources */,
 				DD7267961FB41CA500514E72 /* ListMainController.swift in Sources */,
@@ -382,8 +408,10 @@
 				DDD146E41F9EEFAD00709FF5 /* SettingController.swift in Sources */,
 				4B72C2B11F9A09320045EC9E /* Setting.swift in Sources */,
 				4BE462D81F9AA6B000E593C9 /* MainTabBarController.swift in Sources */,
+				4BA6EAAD2131721D007612AD /* extensionUIViewController.swift in Sources */,
 				4B9039E21FD6436E008813EF /* Extensions.swift in Sources */,
 				DD81676F1F96E8FE00A80891 /* AppDelegate.swift in Sources */,
+				4BA6EAA321316D7E007612AD /* PopAnimator.swift in Sources */,
 				4BAE873C1FAAA933007A0ED7 /* SearchResultsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
