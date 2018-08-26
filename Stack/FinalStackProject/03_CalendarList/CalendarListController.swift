@@ -120,11 +120,11 @@ CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
             let updatedMonthLabel = UILabel()
             updatedMonthLabel.textColor = monthLabel.textColor
             updatedMonthLabel.font = monthLabel.font
-            updatedMonthLabel.textAlignment = .center
+            updatedMonthLabel.textAlignment = .right
             updatedMonthLabel.text = date.globalDescription
             updatedMonthLabel.sizeToFit()
             updatedMonthLabel.alpha = 0
-            updatedMonthLabel.center = self.monthLabel.center
+            updatedMonthLabel.frame = self.monthLabel.frame
 
             let offset = CGFloat(48)
             updatedMonthLabel.transform = CGAffineTransform(translationX: 0, y: offset)
@@ -134,23 +134,22 @@ CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
                            delay: 0,
                            options: .curveEaseIn,
                            animations: {
-                self.animationFinished = false
-                self.monthLabel.transform = CGAffineTransform(translationX: 0,
-                                                              y: -offset)
-                self.monthLabel.transform = CGAffineTransform(scaleX: 1,
-                                                              y: 0.1)
-                self.monthLabel.alpha = 0
-
-                updatedMonthLabel.alpha = 1
-                updatedMonthLabel.transform = CGAffineTransform.identity
+                            self.animationFinished = false
+                            self.monthLabel.transform = CGAffineTransform(translationX: 0,
+                                                                          y: -offset)
+                            self.monthLabel.transform = CGAffineTransform(scaleX: 1,
+                                                                          y: 0.1)
+                            self.monthLabel.alpha = 0
+                            
+                            updatedMonthLabel.alpha = 1
+                            updatedMonthLabel.transform = CGAffineTransform.identity
 
             }) { _ in
-                self.animationFinished = true
-                self.monthLabel.frame = updatedMonthLabel.frame
                 self.monthLabel.text = updatedMonthLabel.text
                 self.monthLabel.transform = CGAffineTransform.identity
                 self.monthLabel.alpha = 1
                 updatedMonthLabel.removeFromSuperview()
+                self.animationFinished = true
             }
 
             self.view.insertSubview(updatedMonthLabel,

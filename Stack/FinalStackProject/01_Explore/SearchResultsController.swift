@@ -10,6 +10,11 @@ import UIKit
 
 class SearchResultsController: ExploreController, UISearchResultsUpdating  {
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     // MARK: - Types
     struct StoryboardConstants {
         static let identifier = "SearchResultsViewControllerStoryboardIdentifier"

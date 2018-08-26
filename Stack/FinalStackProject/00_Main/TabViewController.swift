@@ -32,7 +32,7 @@ class CommonTabView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.titleLabel.textColor = .darkGray
+        self.titleLabel.textColor = .lightGray
     }
     
     @IBAction func onSelectTab(_ sender: UIButton) {
@@ -43,11 +43,11 @@ class CommonTabView: UIView {
     
     func deSelectTab() {
         self.tabButton.isSelected = false
-        self.titleLabel.textColor = .darkGray
+        self.titleLabel.textColor = .lightGray
     }
     
     func selectTab() {
-        self.titleLabel.textColor = .lightGray
+        self.titleLabel.textColor = .darkGray
         self.tabButton.isSelected = true
     }
     

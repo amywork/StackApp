@@ -14,7 +14,6 @@ class SearchResultsCell: UITableViewCell {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
-
     
     var data: Explore? {
         didSet {
@@ -23,19 +22,12 @@ class SearchResultsCell: UITableViewCell {
     }
     
     func configureCell() {
-
         let image = UIImage(named: "placeHolder")
         if let imageURL = data?.imageURL {
             self.iconImageView.kf.setImage(with: URL(string: imageURL)!, placeholder: image)
         }
         self.titleLabel.text = data?.title
         self.subTitleLabel.text = data?.URL
-
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -16,21 +16,14 @@
             <rect key="frame" x="0.0" y="0.0" width="68" height="60"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ExploreOff" translatesAutoresizingMaskIntoConstraints="NO" id="1hg-SP-Xlf">
-                    <rect key="frame" x="0.0" y="0.0" width="68" height="38"/>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHF-eG-QRX">
-                    <rect key="frame" x="0.0" y="38" width="68" height="22"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="22" id="06a-WM-48I"/>
-                    </constraints>
+                    <rect key="frame" x="0.0" y="0.0" width="68" height="60"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54w-BQ-r88">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54w-BQ-r88">
                     <rect key="frame" x="0.0" y="0.0" width="68" height="60"/>
-                    <state key="normal" title="Button"/>
                     <connections>
                         <action selector="onSelectTab:" destination="iN0-l3-epB" eventType="touchUpInside" id="xzl-kW-Bjl"/>
                     </connections>
@@ -40,11 +33,8 @@
                 <constraint firstItem="54w-BQ-r88" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="5jF-qN-xir"/>
                 <constraint firstItem="XHF-eG-QRX" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Qhw-WN-i9g"/>
                 <constraint firstItem="XHF-eG-QRX" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Vx6-0e-e4H"/>
-                <constraint firstItem="XHF-eG-QRX" firstAttribute="top" secondItem="1hg-SP-Xlf" secondAttribute="bottom" id="WST-p6-ALo"/>
                 <constraint firstItem="54w-BQ-r88" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="X5Y-Nq-Sts"/>
-                <constraint firstItem="1hg-SP-Xlf" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="bXH-ys-BKv"/>
-                <constraint firstItem="1hg-SP-Xlf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="dPZ-6b-s1o"/>
-                <constraint firstItem="1hg-SP-Xlf" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="fsJ-3B-0pe"/>
+                <constraint firstItem="XHF-eG-QRX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="gMZ-ey-yye"/>
                 <constraint firstAttribute="bottom" secondItem="54w-BQ-r88" secondAttribute="bottom" id="twg-gd-cf8"/>
                 <constraint firstItem="54w-BQ-r88" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="x9y-Yg-6Qi"/>
                 <constraint firstItem="XHF-eG-QRX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="xKq-TB-LSy"/>
@@ -58,7 +48,4 @@
             <point key="canvasLocation" x="6" y="-134"/>
         </view>
     </objects>
-    <resources>
-        <image name="ExploreOff" width="24" height="24"/>
-    </resources>
 </document>

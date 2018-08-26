@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PageController
 
 let UISCREEN_WIDTH = UIScreen.main.bounds.width
 let UISCREEN_HEIGHT = UIScreen.main.bounds.height
@@ -16,7 +15,6 @@ enum MainType: String {
     case explore = "Explore"
     case list = "List"
     case calendar = "Calendar"
-    case setting = "Setting"
     
     var controller: UIViewController {
         get {
@@ -31,10 +29,6 @@ enum MainType: String {
                 return vc
             case .calendar:
                 let vc = Router.getViewController(CalendarListController.self)
-                vc.title = self.rawValue
-                return vc
-            case .setting:
-                let vc = Router.getViewController(SettingController.self)
                 vc.title = self.rawValue
                 return vc
             }
@@ -75,7 +69,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
     
     @discardableResult
     func createViewControllers() -> [UIViewController] {
-        self.controllers = [MainType.explore.controller, MainType.calendar.controller, MainType.list.controller, MainType.setting.controller]
+        self.controllers = [MainType.explore.controller, MainType.list.controller, MainType.calendar.controller]
         self.controllers.forEach { self.addChildViewController($0) }
         
         let views: [UIView] = self.controllers.map { $0.view }

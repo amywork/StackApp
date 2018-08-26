@@ -18,12 +18,6 @@ class ListMainController: UIViewController, RouterProtocol {
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationItem.title = "My Stack"
-        /*self.navigationController?.navigationItem.rightBarButtonItem
-            = UIBarButtonItem(barButtonSystemItem: .add,
-                              target: self,
-                              action: #selector(addController))*/
-        
         NotificationCenter.default
             .addObserver(forName: .newStack, object: nil, queue: nil) { (noti) in
                 self.stacks = GlobalState.shared.stakcs
@@ -32,8 +26,6 @@ class ListMainController: UIViewController, RouterProtocol {
                 }
         }
     }
-    
-    
 }
 
 extension ListMainController: UITableViewDelegate, UITableViewDataSource {
@@ -41,10 +33,6 @@ extension ListMainController: UITableViewDelegate, UITableViewDataSource {
     //MARK: - TableView DataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stacks.count
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "You are now subscribing..."
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

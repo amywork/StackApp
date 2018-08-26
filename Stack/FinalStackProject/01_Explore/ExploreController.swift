@@ -11,15 +11,15 @@ import UIKit
 class ExploreController: UIViewController, RouterProtocol {
     static var storyboardName: String = "Main"
     
-
     struct TableViewConstants {
         static let tableViewCellIdentifier = "SearchResultsCell"
     }
-    
+    @IBOutlet weak var searchTitleView: UIView!
     @IBOutlet weak var tableView: UITableView!
     var searchController: UISearchController!
     var allResults: [Explore] = GlobalState.shared.explores
     var visibleResults: [Explore] = []
+    
     
     var refreshControl: UIRefreshControl?
     
@@ -28,8 +28,9 @@ class ExploreController: UIViewController, RouterProtocol {
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.refreshControl = refreshControl
+       
         // Create the search results view controller and use it for the `UISearchController`.
-        let searchResultsController = storyboard!.instantiateViewController(withIdentifier: SearchResultsController.StoryboardConstants.identifier) as! SearchResultsController
+        let searchResultsController = Router.getViewController(SearchResultsController.self)
         // Create the search controller and make it perform the results updating.
         searchController = UISearchController(searchResultsController: searchResultsController)
         searchController.searchResultsUpdater = searchResultsController
@@ -37,9 +38,8 @@ class ExploreController: UIViewController, RouterProtocol {
         searchController.searchBar.searchBarStyle = .minimal
         searchController.searchBar.placeholder = NSLocalizedString("Search", comment: "services")
         // Include the search bar within the navigation bar.
-        navigationItem.titleView = searchController.searchBar
+        searchTitleView?.addSubview(searchController.searchBar)
         definesPresentationContext = true
-        
         
         App.api.fetchExplores { (isSuccess) in
             if isSuccess {
@@ -104,10 +104,6 @@ class ExploreController: UIViewController, RouterProtocol {
 
 /*UITableViewDataSource*/
 extension ExploreController: UITableViewDelegate, UITableViewDataSource{
-   
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "✔︎ For Tech Savvys"
-    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
