@@ -29,10 +29,10 @@
 		4BAE873C1FAAA933007A0ED7 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE873B1FAAA933007A0ED7 /* SearchResultsController.swift */; };
 		4BAE87401FAAB8D2007A0ED7 /* SearchResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE873F1FAAB8D2007A0ED7 /* SearchResultsCell.swift */; };
 		4BB34C2C1FDA73F500382A11 /* AddNewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB34C2B1FDA73F400382A11 /* AddNewController.swift */; };
+		4BC00A6F213235FF00130BC5 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC00A6E213235FF00130BC5 /* TabViewController.swift */; };
+		4BC00A712132371B00130BC5 /* CommonTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BC00A702132371B00130BC5 /* CommonTabView.xib */; };
 		4BE462D81F9AA6B000E593C9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE462D71F9AA6B000E593C9 /* MainViewController.swift */; };
 		4BF6C339213192C50041B4DC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF6C338213192C50041B4DC /* Router.swift */; };
-		4BF6C33B213194DA0041B4DC /* MenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF6C33A213194DA0041B4DC /* MenuBarCell.swift */; };
-		4BF6C33D213194F40041B4DC /* MenuBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BF6C33C213194F40041B4DC /* MenuBarCell.xib */; };
 		5CF76A8C73B2D6E2E4902C54 /* Pods_FinalStackProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E737C49BE85561C3F4BC5B0C /* Pods_FinalStackProject.framework */; };
 		DD7267941FB41A1400514E72 /* CustomStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7267931FB41A1400514E72 /* CustomStackCell.swift */; };
 		DD7267961FB41CA500514E72 /* ListMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7267951FB41CA500514E72 /* ListMainController.swift */; };
@@ -70,10 +70,10 @@
 		4BAE873B1FAAA933007A0ED7 /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		4BAE873F1FAAB8D2007A0ED7 /* SearchResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsCell.swift; sourceTree = "<group>"; };
 		4BB34C2B1FDA73F400382A11 /* AddNewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewController.swift; sourceTree = "<group>"; };
+		4BC00A6E213235FF00130BC5 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		4BC00A702132371B00130BC5 /* CommonTabView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonTabView.xib; sourceTree = "<group>"; };
 		4BE462D71F9AA6B000E593C9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4BF6C338213192C50041B4DC /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		4BF6C33A213194DA0041B4DC /* MenuBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarCell.swift; sourceTree = "<group>"; };
-		4BF6C33C213194F40041B4DC /* MenuBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuBarCell.xib; sourceTree = "<group>"; };
 		6CC18B5FEF1A916FCD57201E /* Pods-FinalStackProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalStackProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinalStackProject/Pods-FinalStackProject.debug.xcconfig"; sourceTree = "<group>"; };
 		DD7267931FB41A1400514E72 /* CustomStackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackCell.swift; sourceTree = "<group>"; };
 		DD7267951FB41CA500514E72 /* ListMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMainController.swift; sourceTree = "<group>"; };
@@ -125,8 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				4BE462D71F9AA6B000E593C9 /* MainViewController.swift */,
-				4BF6C33A213194DA0041B4DC /* MenuBarCell.swift */,
-				4BF6C33C213194F40041B4DC /* MenuBarCell.xib */,
+				4BC00A6E213235FF00130BC5 /* TabViewController.swift */,
+				4BC00A702132371B00130BC5 /* CommonTabView.xib */,
 			);
 			path = 00_Main;
 			sourceTree = "<group>";
@@ -315,7 +315,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BF6C33D213194F40041B4DC /* MenuBarCell.xib in Resources */,
+				4BC00A712132371B00130BC5 /* CommonTabView.xib in Resources */,
 				DD8167881F96ECA000A80891 /* Assets.xcassets in Resources */,
 				4B4404CD1FEBEC9F00FFCC77 /* Setting.plist in Resources */,
 				4B4526451FDA8B9D00479802 /* GoogleService-Info.plist in Resources */,
@@ -399,7 +399,6 @@
 				4BAE87401FAAB8D2007A0ED7 /* SearchResultsCell.swift in Sources */,
 				4B3CBB521FB5120E00E7CA84 /* Explore.swift in Sources */,
 				4B3BA2EF1FB33A950033E061 /* CalendarController.swift in Sources */,
-				4BF6C33B213194DA0041B4DC /* MenuBarCell.swift in Sources */,
 				4B3BA2EC1FB33A640033E061 /* CalendarView.swift in Sources */,
 				4BA6EAA521316D89007612AD /* PushAnimator.swift in Sources */,
 				DD8167931F97014400A80891 /* CustomTextField.swift in Sources */,
@@ -412,6 +411,7 @@
 				4BA6EAA721316DA6007612AD /* SnapShotView.swift in Sources */,
 				4BA6EAA121316D15007612AD /* NavigationManager.swift in Sources */,
 				4B3BA3081FB481BB0033E061 /* Stack.swift in Sources */,
+				4BC00A6F213235FF00130BC5 /* TabViewController.swift in Sources */,
 				4B769A7E1FDA8DCF00F43BBC /* App.swift in Sources */,
 				DD7267961FB41CA500514E72 /* ListMainController.swift in Sources */,
 				DDEE84C81F99CD20002CDB03 /* ExploreController.swift in Sources */,

@@ -73,6 +73,28 @@ private var NSLayoutAttributeDefaultHeight_key = UnsafeMutableRawPointer(&NSLayo
 private var NSLayoutAttributeDefaultCenterX_key = UnsafeMutableRawPointer(&NSLayoutAttributeDefaultCenterX)
 private var NSLayoutAttributeDefaultCenterY_key = UnsafeMutableRawPointer(&NSLayoutAttributeDefaultCenterY)
 
+extension UIView {
+    
+    func fadeIn(duration: TimeInterval = 0.2) {
+        alpha = 0
+        isHidden = false
+        UIView.animate(withDuration: duration,
+                       animations: {
+                        self.alpha = 1
+        }) { _ in }
+    }
+    
+    func fadeOut(duration: TimeInterval = 0.2) {
+        UIView.animate(withDuration: duration, animations: {
+            self.alpha = 0
+        }) { [weak self] finished in
+            guard let weakSelf = self else { return }
+            weakSelf.isHidden = true
+            weakSelf.alpha = 1
+        }
+    }
+    
+}
 
 
 @inline(__always) private func getLayoutAttributeKey(_ layoutAttribute: NSLayoutAttribute) -> UnsafeMutableRawPointer? {

@@ -954,14 +954,56 @@
                     <view key="view" contentMode="scaleToFill" id="iJv-1U-KUr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ga-jH-yXt">
+                                <rect key="frame" x="0.0" y="20" width="375" height="587"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qGY-Rz-99b">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="587"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="qGY-Rz-99b" firstAttribute="top" secondItem="3ga-jH-yXt" secondAttribute="top" id="36V-28-x5G"/>
+                                    <constraint firstItem="qGY-Rz-99b" firstAttribute="width" secondItem="3ga-jH-yXt" secondAttribute="width" priority="750" id="C8z-aP-Aif"/>
+                                    <constraint firstAttribute="trailing" secondItem="qGY-Rz-99b" secondAttribute="trailing" id="Qlp-bZ-hqy"/>
+                                    <constraint firstItem="qGY-Rz-99b" firstAttribute="height" secondItem="3ga-jH-yXt" secondAttribute="height" id="SHP-9f-UNo"/>
+                                    <constraint firstAttribute="bottom" secondItem="qGY-Rz-99b" secondAttribute="bottom" id="Ucu-I4-4vQ"/>
+                                    <constraint firstItem="qGY-Rz-99b" firstAttribute="leading" secondItem="3ga-jH-yXt" secondAttribute="leading" id="XX6-hV-k9E"/>
+                                </constraints>
+                            </scrollView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSa-u4-buq">
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="5lf-Qa-dKb"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="5Fc-go-CkG" kind="embed" id="Q49-eA-6f3"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="oSa-u4-buq" secondAttribute="trailing" id="1I0-0p-KLt"/>
+                            <constraint firstItem="oSa-u4-buq" firstAttribute="top" secondItem="3ga-jH-yXt" secondAttribute="bottom" id="1WI-fp-8N8"/>
+                            <constraint firstItem="3ga-jH-yXt" firstAttribute="top" secondItem="egN-bt-o2l" secondAttribute="top" id="bKM-Ri-A97"/>
+                            <constraint firstItem="oSa-u4-buq" firstAttribute="leading" secondItem="iJv-1U-KUr" secondAttribute="leading" id="bTz-Oe-jjn"/>
+                            <constraint firstItem="egN-bt-o2l" firstAttribute="bottom" secondItem="oSa-u4-buq" secondAttribute="bottom" id="eBB-M8-1YP"/>
+                            <constraint firstItem="egN-bt-o2l" firstAttribute="trailing" secondItem="3ga-jH-yXt" secondAttribute="trailing" id="erk-RB-4vo"/>
+                            <constraint firstItem="3ga-jH-yXt" firstAttribute="leading" secondItem="egN-bt-o2l" secondAttribute="leading" id="vwv-FF-ERo"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="egN-bt-o2l"/>
                     </view>
                     <navigationItem key="navigationItem" id="Cvp-gh-uwN"/>
+                    <connections>
+                        <outlet property="containerView" destination="qGY-Rz-99b" id="y3R-fE-bU0"/>
+                        <outlet property="contentScrollView" destination="3ga-jH-yXt" id="isB-tB-viz"/>
+                        <outlet property="menuTabView" destination="oSa-u4-buq" id="w1V-SE-hm1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wnb-ea-kRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2873" y="-4021"/>
+            <point key="canvasLocation" x="-2874.4000000000001" y="-4021.4392803598203"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="brh-Ff-zid">
@@ -979,6 +1021,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oyz-Ux-uqz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3686" y="-4021"/>
+        </scene>
+        <!--Tab View Controller-->
+        <scene sceneID="mQK-wa-Rk0">
+            <objects>
+                <viewController storyboardIdentifier="TabViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Fc-go-CkG" customClass="TabViewController" customModule="FinalStackProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ual-3p-6Le">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lx1-9w-qal">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Lx1-9w-qal" firstAttribute="top" secondItem="ual-3p-6Le" secondAttribute="top" id="CIl-cC-tHz"/>
+                            <constraint firstAttribute="bottom" secondItem="Lx1-9w-qal" secondAttribute="bottom" id="PYu-L2-sGn"/>
+                            <constraint firstItem="Lx1-9w-qal" firstAttribute="leading" secondItem="ual-3p-6Le" secondAttribute="leading" id="khh-Mx-Xkk"/>
+                            <constraint firstAttribute="trailing" secondItem="Lx1-9w-qal" secondAttribute="trailing" id="vgw-kX-880"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="stackView" destination="Lx1-9w-qal" id="uhP-fj-TKU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S4a-0g-diB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2874" y="-3596"/>
         </scene>
     </scenes>
     <resources>
