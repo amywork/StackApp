@@ -103,7 +103,7 @@ class ExploreController: UIViewController, RouterProtocol {
 }
 
 /*UITableViewDataSource*/
-extension ExploreController: UITableViewDelegate, UITableViewDataSource{
+extension ExploreController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
@@ -121,14 +121,9 @@ extension ExploreController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
-        let sb = UIStoryboard.main()
-        let destination = sb.instantiateViewController(withIdentifier: "AddNewController") as! AddNewController
-        destination.name = visibleResults[indexPath.row].title
-        destination.descriptions = visibleResults[indexPath.row].description
-        let navi = UINavigationController(rootViewController: destination)
-        self.present(navi, animated: true, completion: nil)
-        //self.navigationController?.pushViewController(destination, animated: true)
+        let vc = Router.pushViewController(AddNewController.self)
+        vc.name = visibleResults[indexPath.row].title
+        vc.descriptions = visibleResults[indexPath.row].description
     }
 
 }
-

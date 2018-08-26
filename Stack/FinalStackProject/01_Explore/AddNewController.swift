@@ -13,60 +13,37 @@ enum StackDetailType {
     case Edit
 }
 
-class AddNewController: UIViewController, UITextFieldDelegate {
+class AddNewController: UIViewController, UITextFieldDelegate, RouterProtocol {
+    
+    static var storyboardName: String = "Main"
     
     var type: StackDetailType = .Add
-    
     var name: String?
     var descriptions: String?
     var selectedStackData: Stack?
 
     var firstBillingDate: Date? {
-        guard let date = firstBillTexField.text else { return nil }
+        guard let date = billDateLabel.text else { return nil }
         let formatter = DateFormatter()
         let convertedDate = formatter.makeDate(with: date)
         return convertedDate
     }
     
     var planCycleType: PlanType? {
-        guard let type = cycleTexField.text else { return nil }
+        guard let type = cycleLabel.text else { return nil }
         let planType = PlanType(rawValue: type)
         return planType
     }
     
+    var popAnimator: PopAnimator?
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
-    @IBOutlet weak var priceTextField: UITextField!
-    @IBOutlet weak var firstBillPickerView: UIView!
-    @IBOutlet weak var firstBillTexField: UITextField!
-    @IBOutlet weak var cyclePickerView: UIView!
-    @IBOutlet weak var cycleTexField: UITextField!
+    @IBOutlet weak var topTitleView: UIView!
+    @IBOutlet weak var billDateLabel: UILabel!
+    @IBOutlet weak var priceTextLabel: UILabel!
+    @IBOutlet weak var cycleLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
-  
-    @IBAction func didTapSaveBtn(_ sender: UIButton) {
-        guard let name = nameTextField.text else { return }
-        guard let date = firstBillingDate else { return }
-        guard let planType = planCycleType else { return }
-        guard let priceText = priceTextField.text, let price = Float(priceText)  else { return }
-        let newStack = Stack(title: name, planType: planType, date: date, price: price)
-        
-        switch type {
-        case .Add:
-            GlobalState.shared.addStack(stack: newStack)
-            self.dismiss(animated: true, completion: nil)
-        case .Edit:
-            guard let selectedStack = selectedStackData else { return }
-            var filteredStacks = GlobalState.shared.stakcs.filter({ (stack) -> Bool in
-                return stack != selectedStack
-            })
-            filteredStacks.append(newStack)
-            GlobalState.shared.stakcs = filteredStacks
-            self.navigationController?.popViewController(animated: true)
-        }
-        
-        NotificationCenter.default.post(name: .newStack, object: nil)
-        
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +52,8 @@ class AddNewController: UIViewController, UITextFieldDelegate {
         }
         configureTextFields()
         configureButton()
+        
+        self.popAnimator = PopAnimator(animationType: .up, tagetViewController: self, tagetView: self.topTitleView)
     }
     
     func configureButton() {
@@ -87,11 +66,6 @@ class AddNewController: UIViewController, UITextFieldDelegate {
     }
     
     func configureTextFields() {
-        cycleTexField.delegate = self
-        firstBillTexField.tintColor = .clear
-        cycleTexField.tintColor = .clear
-        firstBillPickerView.isHidden = true
-        cyclePickerView.isHidden = true
         self.nameTextField.text = name
         self.descriptionTextView.text = descriptions
         nameTextField.isEnabled = false
@@ -102,133 +76,102 @@ class AddNewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifier = segue.identifier else { return }
-        switch identifier {
-        case "pickerContainerController":
-            let destination = segue.destination as! PickerContainerController
-            destination.delegate = self
-        case "cycleContainerController":
-            let destination = segue.destination as! cyclePickerController
-            destination.delegate = self
-        default:
-            break
-        }
-    }
-    
     func configureUI(data: Stack) {
         name = data.title
-        priceTextField.text = "\(data.price)"
-        cycleTexField.text = data.planType.rawValue
-        firstBillTexField.text = data.date.string()
+        priceTextLabel.text = "\(data.price)"
+        cycleLabel.text = data.planType.rawValue
+        billDateLabel.text = data.date.string()
     }
-
+    
+    @IBAction func didTapClose(_ sender: UIButton) {
+        self.popVC()
+    }
+    
+    @IBAction func didTapSaveBtn(_ sender: UIButton) {
+        guard let name = nameTextField.text else { return }
+        guard let date = firstBillingDate else { return }
+        guard let planType = planCycleType else { return }
+        guard let priceText = priceTextLabel.text, let price = Float(priceText) else { return }
+        let newStack = Stack(title: name, planType: planType, date: date, price: price)
+        
+        switch type {
+        case .Add:
+            GlobalState.shared.addStack(stack: newStack)
+            self.popVC()
+            
+        case .Edit:
+            guard let selectedStack = selectedStackData else { return }
+            var filteredStacks = GlobalState.shared.stakcs.filter({ (stack) -> Bool in
+                return stack != selectedStack
+            })
+            filteredStacks.append(newStack)
+            GlobalState.shared.stakcs = filteredStacks
+            self.popVC()
+        }
+        
+        NotificationCenter.default.post(name: .newStack, object: nil)
+    }
 }
 
-extension AddNewController: PickerContainerControllerDelegate, cyclePickerControllerDelegate {
+extension AddNewController {
     
-    @IBAction func didTapFirstBillTextField(_ sender: UITextField) {
-        firstBillPickerView.isHidden = false
-        firstBillTexField.isEnabled = false
+    @IBAction func didTapPriceTextField(_ sender: UIButton) {
+        let alert = UIAlertController(style: .alert, title: "TextField")
+        let config: TextField.Config = { textField in
+            textField.becomeFirstResponder()
+            textField.textColor = .black
+            textField.placeholder = "Type something"
+            //textField.left(image: UIImag, color: .black)
+            textField.leftViewPadding = 12
+            textField.borderWidth = 1
+            textField.cornerRadius = 8
+            textField.borderColor = UIColor.lightGray.withAlphaComponent(0.5)
+            textField.backgroundColor = nil
+            textField.keyboardAppearance = .default
+            textField.keyboardType = .default
+            textField.isSecureTextEntry = true
+            textField.returnKeyType = .done
+            textField.action { [weak self] textField in
+                // validation
+                guard let `self` = self else { return }
+                self.priceTextLabel.text = textField.text
+            }
+        }
+        alert.addOneTextField(configuration: config)
+        alert.addAction(title: "OK", style: .cancel)
+        alert.show()
     }
-    
-    @IBAction func didTapCycleTexField(_ sender: UITextField) {
-        cyclePickerView.isHidden = false
-        cycleTexField.isEnabled = false
-    }
-    
-    func didSelectedPickerItem(_ date: Date) {
-        firstBillTexField.text = date.string()
-    }
-    
-    func didSelectedFirstBillDate() {
-        firstBillPickerView.isHidden = true
-        firstBillTexField.isEnabled = true
-    }
-    
-    func didSelectedPickerItem(_ type: String) {
-        cycleTexField.text = type
-    }
-    
-    func didSelectedCycle() {
-        cyclePickerView.isHidden = true
-        cycleTexField.isEnabled = true
-    }
-    
-}
-
-
-protocol PickerContainerControllerDelegate {
-    func didSelectedPickerItem(_ date: Date)
-    func didSelectedFirstBillDate()
-}
-
-protocol cyclePickerControllerDelegate {
-    func didSelectedPickerItem(_ type: String)
-    func didSelectedCycle()
-}
-
-class PickerContainerController: UIViewController {
-   
-    @IBOutlet weak var firstBillPicker: UIDatePicker!
-    
-    var delegate: PickerContainerControllerDelegate?
-    
-    @IBAction func donBtnHandler(_ sender: UIButton) {
-        delegate?.didSelectedPickerItem(firstBillPicker.date)
-        delegate?.didSelectedFirstBillDate()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        delegate?.didSelectedPickerItem(firstBillPicker.date)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-}
-
-class cyclePickerController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-    
-    @IBOutlet weak var cyclePicker: UIPickerView!
-    
-    var delegate: cyclePickerControllerDelegate?
-    let dataSource: [String] = [PlanType.monthly.rawValue, PlanType.yearly.rawValue]
     
 
-    @IBAction func donBtnHandler(_ sender: UIButton) {
-        let selectedRow = cyclePicker.selectedRow(inComponent: 0)
-        let selectedType = dataSource[selectedRow]
-        delegate?.didSelectedPickerItem(selectedType)
-        delegate?.didSelectedCycle()
+    @IBAction func didTapDatePicker(_ sender: UIButton) {
+        let alert = UIAlertController(style: .actionSheet, title: "Select date")
+        alert.addDatePicker(mode: .date, date: Date()) { [weak self] date in
+            guard let `self` = self else { return }
+            self.billDateLabel.text = date.string()
+        }
+        alert.addAction(title: "OK", style: .cancel)
+        alert.show()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        cyclePicker.dataSource = self
-        cyclePicker.delegate = self
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return dataSource.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return dataSource[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        delegate?.didSelectedPickerItem(dataSource[row])
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    @IBAction func didTapCyclePicker(_ sender: UIButton) {
+        let alert = UIAlertController(style: .actionSheet, title: "Picker View", message: "Preferred Content Height")
+        let pickerViewValues: [[String]] = [[PlanType.monthly.rawValue, PlanType.yearly.rawValue]]
+        let pickerViewSelectedValue: PickerViewViewController.Index = (column: 0, row: 0)
+        alert.addPickerView(values: pickerViewValues, initialSelection: pickerViewSelectedValue) { vc, picker, index, values in
+            self.cycleLabel.text = "ABCD"
+        }
+        alert.addAction(title: "Done", style: .cancel)
+        alert.show()
     }
     
 }
+
+extension AddNewController: NavigationAnimatorAble {
+    var pushAnimation: PushAnimator? {
+        return PushAnimator(animationType: .up)
+    }
+    var popAnimation: PopAnimator? {
+        return self.popAnimator
+    }
+}
+

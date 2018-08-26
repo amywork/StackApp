@@ -1116,25 +1116,7 @@ extension UIView {
             self.frame = CGRect(x: self.x, y: self.y, width: self.w, height: value)
         }
     }
-    
-    public var width: CGFloat {
-        get {
-            return self.w
-        }
-        set {
-            self.w = newValue
-        }
-    }
-    
-    public var height: CGFloat {
-        get {
-            return self.h
-        }
-        set {
-            self.h = newValue
-        }
-    }
-    
+
     ///   getter and setter for the x coordinate of leftmost edge of the view.
     public var left: CGFloat {
         get {
@@ -1195,15 +1177,6 @@ extension UIView {
             return self.center.y
         } set(value) {
             self.center.y = value
-        }
-    }
-    
-    ///   getter and setter for frame size for the view.
-    public var size: CGSize {
-        get {
-            return self.frame.size
-        } set(value) {
-            self.frame = CGRect(origin: self.frame.origin, size: value)
         }
     }
     
@@ -1333,33 +1306,6 @@ extension UIView {
         }
     }
     
-    @IBInspectable var borderColor: UIColor? {
-        get {
-            return UIColor(cgColor: self.layer.borderColor!)
-        }
-        set {
-            self.layer.borderColor = newValue?.cgColor
-        }
-    }
-    
-    @IBInspectable var borderWidth: CGFloat {
-        get {
-            return self.layer.borderWidth
-        }
-        set {
-            self.layer.borderWidth = newValue;
-        }
-    }
-    
-    @IBInspectable public var cornerRadius: CGFloat {
-        get {
-            return self.layer.cornerRadius
-        }
-        set {
-            self.layer.cornerRadius = newValue;
-            self.layer.masksToBounds = true
-        }
-    }
     /// EZSwiftExtensions
     public func setCornerRadius(radius: CGFloat) {
         self.layer.cornerRadius = radius
@@ -1571,15 +1517,7 @@ extension UIView {
     }
 }
 
-//TODO: add to readme
 extension UIView {
-    /// EZSwiftExtensions [UIRectCorner.TopLeft, UIRectCorner.TopRight]
-    public func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        self.layer.mask = mask
-    }
     
     /// EZSwiftExtensions - Mask square/rectangle UIView with a circular/capsule cover, with a border of desired color and width around it
     public func roundView(withBorderColor color: UIColor? = nil, withBorderWidth width: CGFloat? = nil) {

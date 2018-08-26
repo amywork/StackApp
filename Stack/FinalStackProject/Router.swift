@@ -52,4 +52,15 @@ class Router {
         }
         return Router.assembleModule(storyboardName, Bundle.main, storyboardID) as! T
     }
+    
+    //MARK:- pushViewController
+    @discardableResult
+    class func pushViewController<T:UIViewController & RouterProtocol>(_ classType: T.Type,
+                                                                           animated: Bool = true) -> T {
+        let storyboardName = classType.storyboardName
+        let storyboardID = self.getStoryboardId(classType)
+        let navigationController = NavigationManager.shared.mainNavigation
+        let vc = Router.pushViewController(storyboardName, storyboardID, navigationController, Bundle.main, animated)
+        return vc as! T
+    }
 }
