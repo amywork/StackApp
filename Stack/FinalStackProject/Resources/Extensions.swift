@@ -9,6 +9,22 @@
 import Foundation
 import UIKit
 
+extension String {
+    public func convertPriceFormat() -> String? {
+        guard self.count > 0 else {
+            return nil
+        }
+        
+        guard let value = Double(self) else { return nil }
+        
+        let price = NSNumber(floatLiteral: value)
+        let formatter = NumberFormatter()
+        formatter.groupingSeparator = ","
+        formatter.numberStyle = .decimal
+        return formatter.string(from: price)!
+    }
+}
+
 
 extension UIStoryboard {
     static func main() -> UIStoryboard { return UIStoryboard(name: "Main", bundle: nil) }

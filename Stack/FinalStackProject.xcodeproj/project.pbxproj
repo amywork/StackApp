@@ -238,7 +238,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		4B9B26D42132BB9B006DE326 /* Source */ = {
+		4B9B26D42132BB9B006DE326 /* Picker */ = {
 			isa = PBXGroup;
 			children = (
 				4B9B26D52132BB9B006DE326 /* Extensions */,
@@ -246,7 +246,7 @@
 				4B9B26EB2132BB9B006DE326 /* Pickers */,
 				4B9B271F2132BB9B006DE326 /* Views */,
 			);
-			path = Source;
+			path = Picker;
 			sourceTree = "<group>";
 		};
 		4B9B26D52132BB9B006DE326 /* Extensions */ = {
@@ -560,9 +560,6 @@
 				4BA6EAA221316D7E007612AD /* PopAnimator.swift */,
 				4BA6EAA421316D89007612AD /* PushAnimator.swift */,
 				4BA6EAA621316DA6007612AD /* SnapShotView.swift */,
-				4BA6EAAA213170A2007612AD /* extensionUICollectionView.swift */,
-				4BA6EAAC2131721D007612AD /* extensionUIViewController.swift */,
-				4BA6EAAE21317236007612AD /* extensionUIView.swift */,
 				4BF6C338213192C50041B4DC /* Router.swift */,
 				DD8167821F96E92500A80891 /* Resources */,
 				DD81679B1F97351D00A80891 /* DataSource */,
@@ -589,9 +586,12 @@
 		DD8167821F96E92500A80891 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4B9B26D42132BB9B006DE326 /* Source */,
+				4B9B26D42132BB9B006DE326 /* Picker */,
 				DD8167721F96E8FE00A80891 /* Main.storyboard */,
 				DD8167871F96ECA000A80891 /* Assets.xcassets */,
+				4BA6EAAA213170A2007612AD /* extensionUICollectionView.swift */,
+				4BA6EAAC2131721D007612AD /* extensionUIViewController.swift */,
+				4BA6EAAE21317236007612AD /* extensionUIView.swift */,
 				4B9039E11FD6436E008813EF /* Extensions.swift */,
 			);
 			path = Resources;
@@ -628,7 +628,6 @@
 				DD8167681F96E8FE00A80891 /* Frameworks */,
 				DD8167691F96E8FE00A80891 /* Resources */,
 				D19168E3FD756FDC45D479C7 /* [CP] Embed Pods Frameworks */,
-				F7831BE3D0FEBF9ADD347844 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -733,21 +732,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinalStackProject/Pods-FinalStackProject-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F7831BE3D0FEBF9ADD347844 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinalStackProject/Pods-FinalStackProject-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

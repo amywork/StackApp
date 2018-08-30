@@ -26,7 +26,7 @@ final class GlobalState {
     var explores: [Explore] = []
     var settings: [Setting] = []
     
-    var stakcs: [Stack] {
+    var savedStacks: [Stack] {
         get {
             let stackDics: [[String:String]] = UserDefaults.standard.array(forKey: Constants.Stacks.rawValue) as? [[String:String]] ?? []
             let stacks = stackDics.compactMap { (stackDic) -> Stack? in

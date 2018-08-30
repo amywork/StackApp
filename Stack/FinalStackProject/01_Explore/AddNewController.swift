@@ -35,6 +35,8 @@ class AddNewController: UIViewController, UITextFieldDelegate, RouterProtocol {
         return planType
     }
     
+    
+    
     var popAnimator: PopAnimator?
     
     @IBOutlet weak var nameTextField: UITextField!
@@ -101,11 +103,9 @@ class AddNewController: UIViewController, UITextFieldDelegate, RouterProtocol {
             
         case .Edit:
             guard let selectedStack = selectedStackData else { return }
-            var filteredStacks = GlobalState.shared.stakcs.filter({ (stack) -> Bool in
-                return stack != selectedStack
-            })
+            var filteredStacks = GlobalState.shared.savedStacks.filter { $0 != selectedStack }
             filteredStacks.append(newStack)
-            GlobalState.shared.stakcs = filteredStacks
+            GlobalState.shared.savedStacks = filteredStacks
             self.popVC()
         }
         
@@ -116,11 +116,12 @@ class AddNewController: UIViewController, UITextFieldDelegate, RouterProtocol {
 extension AddNewController {
     
     @IBAction func didTapPriceTextField(_ sender: UIButton) {
-        let alert = UIAlertController(style: .alert, title: "TextField")
-        let config: TextField.Config = { textField in
+        let alert = UIAlertController(style: .alert, title: "Payment Plan")
+        let config: TextField.Config = { [weak self] textField in
+            guard let `self` = self else { return }
             textField.becomeFirstResponder()
             textField.textColor = .black
-            textField.placeholder = "Type something"
+            textField.placeholder = "9.99"
             //textField.left(image: UIImag, color: .black)
             textField.leftViewPadding = 12
             textField.borderWidth = 1
@@ -129,12 +130,13 @@ extension AddNewController {
             textField.backgroundColor = nil
             textField.keyboardAppearance = .default
             textField.keyboardType = .default
-            textField.isSecureTextEntry = true
+            textField.isSecureTextEntry = false
             textField.returnKeyType = .done
             textField.action { [weak self] textField in
-                // validation
-                guard let `self` = self else { return }
-                self.priceTextLabel.text = textField.text
+                guard let `self` = self else { return } // validation
+                guard let userTyped = textField.text, let price = userTyped.convertPriceFormat() else { return }
+                self.priceTextLabel.text = price
+                self.priceTextLabel.textColor = #colorLiteral(red: 0.26, green: 0.47, blue: 0.96, alpha: 1)
             }
         }
         alert.addOneTextField(configuration: config)
@@ -144,21 +146,24 @@ extension AddNewController {
     
 
     @IBAction func didTapDatePicker(_ sender: UIButton) {
-        let alert = UIAlertController(style: .actionSheet, title: "Select date")
+        let alert = UIAlertController(style: .actionSheet, title: "Payment date")
         alert.addDatePicker(mode: .date, date: Date()) { [weak self] date in
             guard let `self` = self else { return }
             self.billDateLabel.text = date.string()
+            self.billDateLabel.textColor = #colorLiteral(red: 0.26, green: 0.47, blue: 0.96, alpha: 1)
         }
         alert.addAction(title: "OK", style: .cancel)
         alert.show()
     }
     
     @IBAction func didTapCyclePicker(_ sender: UIButton) {
-        let alert = UIAlertController(style: .actionSheet, title: "Picker View", message: "Preferred Content Height")
+        let alert = UIAlertController(style: .actionSheet, title: "Payment Cycle", message: "How often do you pay?")
         let pickerViewValues: [[String]] = [[PlanType.monthly.rawValue, PlanType.yearly.rawValue]]
         let pickerViewSelectedValue: PickerViewViewController.Index = (column: 0, row: 0)
-        alert.addPickerView(values: pickerViewValues, initialSelection: pickerViewSelectedValue) { vc, picker, index, values in
-            self.cycleLabel.text = "ABCD"
+        alert.addPickerView(values: pickerViewValues, initialSelection: pickerViewSelectedValue) { [weak self] vc, picker, index, values in
+            guard let `self` = self else { return }
+            self.cycleLabel.text = values[index.column][index.row]
+            self.cycleLabel.textColor = #colorLiteral(red: 0.26, green: 0.47, blue: 0.96, alpha: 1)
         }
         alert.addAction(title: "Done", style: .cancel)
         alert.show()

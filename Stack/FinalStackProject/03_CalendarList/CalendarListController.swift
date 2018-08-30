@@ -12,7 +12,7 @@ import CVCalendar
 class CalendarListController: UIViewController, RouterProtocol {
     static var storyboardName: String = "Main"
     
-    var stacks: [Stack] = GlobalState.shared.stakcs
+    var stacks: [Stack] = GlobalState.shared.savedStacks
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var calendarView: CVCalendarView!
     @IBOutlet weak var menuView: CVCalendarMenuView!
@@ -30,7 +30,7 @@ class CalendarListController: UIViewController, RouterProtocol {
         
         NotificationCenter.default
             .addObserver(forName: .newStack, object: nil, queue: nil) { (noti) in
-                self.stacks = GlobalState.shared.stakcs
+                self.stacks = GlobalState.shared.savedStacks
                 DispatchQueue.main.async {
                     self.calendarView.reloadInputViews()
                     self.tableView.reloadData()
@@ -108,7 +108,7 @@ CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
         }
         stacks = newList
         tableView.reloadData()
-        stacks = GlobalState.shared.stakcs
+        stacks = GlobalState.shared.savedStacks
     }
 
     func shouldSelectRange() -> Bool {

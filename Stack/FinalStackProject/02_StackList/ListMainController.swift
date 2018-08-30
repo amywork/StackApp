@@ -13,14 +13,14 @@ class ListMainController: UIViewController, RouterProtocol {
     static var storyboardName: String = "Main"
     
     @IBOutlet weak var itemTableView: UITableView!
-    lazy var stacks = GlobalState.shared.stakcs
+    lazy var stacks = GlobalState.shared.savedStacks
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default
             .addObserver(forName: .newStack, object: nil, queue: nil) { (noti) in
-                self.stacks = GlobalState.shared.stakcs
+                self.stacks = GlobalState.shared.savedStacks
                 DispatchQueue.main.async {
                     self.itemTableView.reloadData()
                 }

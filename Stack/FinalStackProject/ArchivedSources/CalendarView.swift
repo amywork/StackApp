@@ -126,7 +126,7 @@ class CalendarView: UIView, CalendarViewDelegate {
         return collectionView
     }()
     
-    var stacks: [Stack] = GlobalState.shared.stakcs
+    var stacks: [Stack] = GlobalState.shared.savedStacks
     var days: [Date] {
         return stacks.map { (stack) -> Date in
             return stack.date

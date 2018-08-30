@@ -21,7 +21,7 @@ PODS:
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
     - GoogleUtilities/MethodSwizzler (~> 5.2.0)
     - GoogleUtilities/Network (~> 5.2)
-    - GoogleUtilities/NSData+zlib (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
   - FirebaseAuth (5.0.3):
     - FirebaseAuthInterop (~> 1.0)
@@ -44,7 +44,7 @@ PODS:
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
     - GoogleUtilities/MethodSwizzler (~> 5.2.0)
     - GoogleUtilities/Network (~> 5.2)
-    - GoogleUtilities/NSData+zlib (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
   - GoogleUtilities/AppDelegateSwizzler (5.2.2):
     - GoogleUtilities/Environment
@@ -57,9 +57,9 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/Network (5.2.2):
     - GoogleUtilities/Logger
-    - GoogleUtilities/NSData+zlib
+    - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - GoogleUtilities/NSData+zlib (5.2.2)
+  - "GoogleUtilities/NSData+zlib (5.2.2)"
   - GoogleUtilities/Reachability (5.2.2):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.0)
@@ -78,6 +78,24 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - Kingfisher (~> 4.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CVCalendar
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseAuth
+    - FirebaseAuthInterop
+    - FirebaseCore
+    - FirebaseDatabase
+    - FirebaseInstanceID
+    - FirebaseStorage
+    - GoogleAppMeasurement
+    - GoogleUtilities
+    - GTMSessionFetcher
+    - Kingfisher
+    - leveldb-library
+    - nanopb
 
 SPEC CHECKSUMS:
   CVCalendar: 505c11b11a088b43f159806e791eba1c2540853b
@@ -98,4 +116,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: d35710769ec29f9964a833ca84b7e4cb018613a4
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

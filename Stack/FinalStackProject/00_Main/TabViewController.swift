@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public typealias IntegerClosure             = (_ value: Int) -> Void
+public typealias IntegerClosure = (_ value: Int) -> Void
 
 protocol CommonTabViewDataSource: class {
     func numberOfItems() -> Int

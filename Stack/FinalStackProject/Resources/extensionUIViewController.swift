@@ -80,7 +80,7 @@ extension UIViewController {
     public var topParentVC: UIViewController? {
         var vcs = parentVCs
         
-        if let navi = vcs.last as? UINavigationController {
+        if let _ = vcs.last as? UINavigationController {
             vcs.removeLast()
             if let lastVC = vcs.last {
                 return lastVC

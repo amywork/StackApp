@@ -12,9 +12,9 @@ let UISCREEN_WIDTH = UIScreen.main.bounds.width
 let UISCREEN_HEIGHT = UIScreen.main.bounds.height
 
 enum MainType: String {
-    case explore = "Explore"
-    case list = "List"
-    case calendar = "Calendar"
+    case explore = "explore👀"
+    case list = "saved📩"
+    case calendar = "calendar📆"
     
     var controller: UIViewController {
         get {

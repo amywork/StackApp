@@ -17,7 +17,7 @@ struct Stack {
     
     var title: String
     var planType: PlanType
-    var date: Date // From yyMMdd
+    var date: Date // yyMMdd
     var price: Float
     
     var dictionary: [String:String] {
@@ -35,7 +35,6 @@ struct Stack {
     }
 
     init?(with dic: [String:String]) {
-        
         guard let title = dic["title"] else { return nil }
         self.title = title
         
@@ -48,13 +47,12 @@ struct Stack {
         let date = formatter.date(from: dateString)
         self.date = date!
         
-        guard let price = dic["price"] else { return nil }
-        self.price = Float(price)!
+        guard let value = dic["price"], let price = Float(value) else { return nil }
+        self.price = price
         
     }
 
 }
-
 
 extension Stack: Equatable {
     static func ==(lhs: Stack, rhs: Stack) -> Bool {
